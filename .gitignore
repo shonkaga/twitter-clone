@@ -1,6 +1,13 @@
 
 env/
+# remove database for secrutity reasons
 components/data.sqlite
+
+# remove all the profile pics except the default one
+components/profile_pics/*
+!components/profile_pics/default_profile.png
+
+
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
