@@ -38,7 +38,7 @@ def login():
         # The verify_password method comes from the User object
         # https://stackoverflow.com/questions/2209755/python-operation-vs-is-not
 
-        if user is not None and user.check_password(form.password.data):
+        if user.check_password(form.password.data):
             #Log in the user
 
             login_user(user)
@@ -55,11 +55,7 @@ def login():
 
             return redirect(next)
         else:
-            if user is None:
-                flash("This email is not registered")
-            else:
-                flash("Wrong Password")
-            flash_errors(form)
+            flash("Wrong Password")
     return render_template('login.html', form=form)
 
 
@@ -106,6 +102,6 @@ def account():
     elif request.method == 'GET':
         form.username.data = current_user.username
         form.email.data = current_user.email
-    flash_errors(form)
+        
     profile_image = url_for('static', filename='profile_pics/' + current_user.profile_image)
     return render_template('account.html', profile_image=profile_image, form=form)

@@ -14,6 +14,15 @@ class LoginForm(FlaskForm):
     password = PasswordField('Password', validators=[DataRequired()])
     submit = SubmitField('Log In')
 
+    def validate_email(self, field):
+        # attempt to get the user
+        user = User.query.filter_by(email=field.data).first()
+        # if this email does not exist
+        if user is None:
+            raise ValidationError('This email is not in the system.')
+
+
+
 
 class RegistrationForm(FlaskForm):
     email = StringField('Email', validators=[DataRequired(),Email()])
@@ -21,6 +30,17 @@ class RegistrationForm(FlaskForm):
     password = PasswordField('Password', validators=[DataRequired(), EqualTo('pass_confirm', message='Passwords Must Match!')])
     pass_confirm = PasswordField('Confirm password', validators=[DataRequired()])
     submit = SubmitField('Register!')
+
+
+    def validate_email(self, field):
+        # Check if not None for that user email!
+        if User.query.filter_by(email=field.data).first():
+            raise ValidationError('Your email has been registered already!')
+
+    def validate_username(self, field):
+        # Check if not None for that username!
+        if User.query.filter_by(username=field.data).first():
+            raise ValidationError('Sorry, that username is taken!')
 
 class UpdateUserForm(FlaskForm):
     email = StringField('Email', validators=[DataRequired(),Email(message="Must be an email")])
