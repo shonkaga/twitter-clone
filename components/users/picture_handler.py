@@ -22,3 +22,21 @@ def add_profile_pic(pic_upload,username):
     pic.save(filepath)
 
     return storage_filename
+
+def add_post_pic(pic_upload,post_id):
+    filename = pic_upload.filename
+    # Grab extension type .jpg or .png
+    ext_type = filename.split('.')[-1]
+    storage_filename = str(post_id) + '.' +ext_type
+
+    filepath = os.path.join(current_app.root_path, 'static\post_pics', storage_filename)
+
+    # Play Around with this size.
+    output_size = (400, 400)
+
+    # Open the picture and save it
+    pic = Image.open(pic_upload)
+    pic.thumbnail(output_size)
+    pic.save(filepath)
+
+    return storage_filename

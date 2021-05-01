@@ -1,6 +1,25 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="container">
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+
+      {% for message in messages %}
+      <div class="alert alert-danger" role="alert">
+        {{message}}
+      </div>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+  {% for field, errors in form.errors.items() %}
+  {% for error in errors %}
+
+
+  <div class="alert alert-danger" role="alert">
+    {{error}}
+  </div>
+  {% endfor %}
+  {% endfor %}
   <div class="jumbotron">
     <div align='center'>
       <h1 >Page for  {{user.username}}</h1>
@@ -13,6 +32,65 @@
       {% endif %}
 
     </div>
+
+    {% if current_user.is_authenticated and current_user.username == user.username %}
+      <div align='center'>
+        <p> Write a post.. </p>
+        <form  method="POST" enctype="multipart/form-data">
+          {{ form.hidden_tag() }}
+          <div class="form-group">
+            {{ form.text.label(class="form-group") }}
+            {{form.text(class='form-control')  }}
+          </div>
+          <div class="form-group">
+            {{ form.picture.label(class="form-group") }}
+            {{ form.picture(class="form-control-file") }}
+          </div>
+          <div class="form-group">
+              {{ form.submit(class="btn btn-primary") }}
+          </div>
+        </form>
+      </div>
+    </div>
+    {% endif %}
+
+    <h2> Posts: </h2>
+    {% for post in posts %}
+    <div class="card" style="width: 100%">
+  <div class="card-header">
+
+    <ul class="nav">
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('users.u', username=user.username)}}"> {{post.user.username }} </a>
+      </li>
+      <li class="nav-item">
+         <a class="nav-link"> {{post.date.strftime('%Y-%m-%d')}} </a>
+      </li>
+      {% if current_user.is_authenticated and current_user.username == user.username %}
+      <li class="nav-item">
+        <a class="nav-link" href="#"> edit post </a>
+      </li>
+    </ul>
+      {% endif %}
+
+
+  </div>
+
+  <div class="card-body">
+    <p class="card-text">{{post.text}}</p>
+  </div>
+  {% if post.image %}
+    <img  src="{{url_for('static', filename='post_pics/' + post.image) }}">
+  {% endif %}
+    {% endfor %}
+
+</div>
+
+
+
+</div>
+
+
   </div>
 
 {% endblock content %}
