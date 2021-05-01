@@ -68,7 +68,9 @@ def logout():
 @users.route("/account", methods=['GET', 'POST'])
 @login_required
 def account():
-
+    '''
+   ADD BIO INTO THE SUBMIT THEN ALSO ADD THAT INTO THE HTML FILE.
+    '''
     form = UpdateUserForm()
     profile_image = url_for('static', filename='profile_pics/' + current_user.profile_image)
     if form.validate_on_submit():
@@ -76,6 +78,7 @@ def account():
             username = current_user.username
             pic = add_profile_pic(form.picture.data,username)
             current_user.profile_image = pic
+
 
         # checking that other users don't have the requested email or username
 
@@ -95,6 +98,7 @@ def account():
 
         current_user.username = form.username.data
         current_user.email = form.email.data
+        current_user.bio = form.bio.data
 
         db.session.commit()
 
@@ -103,6 +107,17 @@ def account():
     elif request.method == 'GET':
         form.username.data = current_user.username
         form.email.data = current_user.email
+        form.bio.data = current_user.bio
 
     profile_image = url_for('static', filename='profile_pics/' + current_user.profile_image)
     return render_template('account.html', profile_image=profile_image, form=form)
+
+
+@users.route("/u/<username>")
+def u(username):
+    user = User.query.filter_by(username=username).first()
+    if user is None:
+        return render_template('error_pages/404.html'), 404
+    else:
+        profile_image = url_for('static', filename='profile_pics/' + current_user.profile_image)
+        return render_template('user.html', user=user, profile_image=profile_image)

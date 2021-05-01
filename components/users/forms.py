@@ -1,6 +1,6 @@
 # Form Based Imports
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField
+from wtforms import StringField, PasswordField, SubmitField, TextAreaField
 from wtforms.validators import DataRequired,Email,EqualTo
 from wtforms import ValidationError
 from flask_wtf.file import FileField, FileAllowed
@@ -47,3 +47,4 @@ class UpdateUserForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
     picture = FileField('Update Profile Picture', validators=[FileAllowed(['jpg', 'png'],message="This file type is not allowed")])
     submit = SubmitField('Update')
+    bio = TextAreaField('Bio')
