@@ -3,8 +3,15 @@
 <div class="container">
   <div class="jumbotron">
     <div align='center'>
-      <h1 >Welcome to the page for {{user.username}}</h1>
+      <h1 >Page for  {{user.username}}</h1>
+      <p> {{user.name}} </p>
       <img align='center' src="{{ url_for('static', filename='profile_pics/' + user.profile_image) }}">
+      <p> {{user.bio}} </p>
+      {% if current_user.is_authenticated and current_user.username == user.username %}
+        <a href="{{ url_for('users.account')}}"><button class="btn btn-primary" type="submit">Edit account</button></a>
+
+      {% endif %}
+
     </div>
   </div>
 

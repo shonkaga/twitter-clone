@@ -17,6 +17,7 @@ class User(db.Model, UserMixin):
     profile_image = db.Column(db.String(20), nullable=False, default='default_profile.png')
     email = db.Column(db.String(64), unique=True, index=True)
     username = db.Column(db.String(64), unique=True, index=True)
+    bio = db.Column(db.String(500))
     password_hash = db.Column(db.String(128))
 
 
@@ -26,7 +27,6 @@ class User(db.Model, UserMixin):
         self.password_hash = generate_password_hash(password)
 
     def check_password(self,password):
-        # https://stackoverflow.com/questions/23432478/flask-generate-password-hash-not-constant-output
         return check_password_hash(self.password_hash,password)
 
     def __repr__(self):
