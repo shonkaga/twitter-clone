@@ -4,7 +4,7 @@ from components import db
 from werkzeug.security import generate_password_hash,check_password_hash
 from components.models import User, Post
 from components.users.forms import RegistrationForm, LoginForm, UpdateUserForm
-from components.users.picture_handler import add_profile_pic
+from components.users.picture_handler import add_profile_pic, add_post_pic
 from components.posts.forms import WritePost
 
 # setting the users blueprint
@@ -123,7 +123,7 @@ def u(username):
         # this means the user exists
 
         # Grab the profile image of the user
-        profile_image = url_for('static', filename='profile_pics/' + current_user.profile_image)
+        profile_image = url_for('static', filename='profile_pics/' + user.profile_image)
 
         # Grab all the posts this user has made
         posts = Post.query.filter_by(user=user).order_by(Post.date.desc()).all()
@@ -134,14 +134,14 @@ def u(username):
             text = form.text.data
             post = Post(user_id=current_user.id, text=text)
             db.session.add(post)
+            db.session.commit()
 
             if form.picture.data:
-                pic = add_profile_pic(form.picture.data,post.id)
+                pic = add_post_pic(form.picture.data,post.id)
                 post.image = pic
                 db.session.add(post)
-            else:
-                pic = None
-            db.session.commit()
+                db.session.commit()
+
 
             flash('Your post has been posted')
             return redirect(url_for('users.u', username=username))

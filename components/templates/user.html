@@ -80,8 +80,7 @@
     <p class="card-text">{{post.text}}</p>
   </div>
   {% if post.image %}
-
-    <p> there is an image </p>
+    <img  src="{{url_for('static', filename='post_pics/' + post.image) }}">
   {% endif %}
     {% endfor %}
 
