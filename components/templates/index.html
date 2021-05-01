@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="jumbotron">
+    <h1>Welcome to the home page</h1>
+    <p>This is just a static webpage</p>
+  </div>
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+
+      {% for message in messages %}
+      <div class="alert alert-danger" role="alert">
+        {{message}}
+      </div>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+
+  <ul class="list-group">
+    {% for user in users %}
+        <li class="list-group-item">{{user.email}} {{user.username}}</li>
+    {% endfor %}
+
+</ul>
+{% endblock %}
