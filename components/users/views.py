@@ -6,7 +6,7 @@ from components.models import User
 from components.users.forms import RegistrationForm, LoginForm, UpdateUserForm
 from components.users.picture_handler import add_profile_pic
 
-
+# setting the users blueprint
 users = Blueprint('users', __name__)
 
 @users.route('/register', methods=['GET', 'POST'])
@@ -32,6 +32,7 @@ def login():
     form = LoginForm()
     if form.validate_on_submit():
         # Grab the user from our User Models table
+
         user = User.query.filter_by(email=form.email.data).first()
 
         # Check that the user was supplied and the password is right
@@ -102,6 +103,6 @@ def account():
     elif request.method == 'GET':
         form.username.data = current_user.username
         form.email.data = current_user.email
-        
+
     profile_image = url_for('static', filename='profile_pics/' + current_user.profile_image)
     return render_template('account.html', profile_image=profile_image, form=form)
