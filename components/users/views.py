@@ -2,9 +2,10 @@ from flask import render_template, url_for, flash, redirect, request, Blueprint
 from flask_login import login_user, current_user, logout_user, login_required
 from components import db
 from werkzeug.security import generate_password_hash,check_password_hash
-from components.models import User
+from components.models import User, Post
 from components.users.forms import RegistrationForm, LoginForm, UpdateUserForm
 from components.users.picture_handler import add_profile_pic
+from components.posts.forms import WritePost
 
 # setting the users blueprint
 users = Blueprint('users', __name__)
@@ -113,11 +114,36 @@ def account():
     return render_template('account.html', profile_image=profile_image, form=form)
 
 
-@users.route("/u/<username>")
+@users.route("/user/<username>",methods=['GET', 'POST'])
 def u(username):
     user = User.query.filter_by(username=username).first()
     if user is None:
         return render_template('error_pages/404.html'), 404
     else:
+        # this means the user exists
+
+        # Grab the profile image of the user
         profile_image = url_for('static', filename='profile_pics/' + current_user.profile_image)
-        return render_template('user.html', user=user, profile_image=profile_image)
+
+        # Grab all the posts this user has made
+        posts = Post.query.filter_by(user=user).order_by(Post.date.desc()).all()
+        form = WritePost()
+        #the person posts the image
+        if form.validate_on_submit():
+
+            text = form.text.data
+            post = Post(user_id=current_user.id, text=text)
+            db.session.add(post)
+
+            if form.picture.data:
+                pic = add_profile_pic(form.picture.data,post.id)
+                post.image = pic
+                db.session.add(post)
+            else:
+                pic = None
+            db.session.commit()
+
+            flash('Your post has been posted')
+            return redirect(url_for('users.u', username=username))
+
+        return render_template('user.html', user=user, profile_image=profile_image, posts=posts, form=form)

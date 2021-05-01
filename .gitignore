@@ -1,12 +1,13 @@
 
 env/
-# remove database for secrutity reasons
+# remove database for security reasons
 components/data.sqlite
 
-# remove all the profile pics except the default one
-components/profile_pics/*
-!components/profile_pics/default_profile.png
+# ignore all the profile pics except the default one
+components/static/profile_pics/*
+!components/static/profile_pics/default_profile.png
 
+components/static/post_pics/*
 
 
 # Byte-compiled / optimized / DLL files

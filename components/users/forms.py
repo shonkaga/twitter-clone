@@ -45,6 +45,6 @@ class RegistrationForm(FlaskForm):
 class UpdateUserForm(FlaskForm):
     email = StringField('Email', validators=[DataRequired(),Email(message="Must be an email")])
     username = StringField('Username', validators=[DataRequired()])
-    picture = FileField('Update Profile Picture', validators=[FileAllowed(['jpg', 'png'],message="This file type is not allowed")])
+    picture = FileField('Update Profile Picture', validators=[FileAllowed(['jpg', 'png','jpeg','bmp','bmp','gif','webp'],message="This file type is not allowed")])
     submit = SubmitField('Update')
     bio = TextAreaField('Bio')
