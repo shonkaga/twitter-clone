@@ -8,6 +8,7 @@ components/profile_pics/*
 !components/profile_pics/default_profile.png
 
 
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
