@@ -1,0 +1,908 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Feed</title>
+  <link rel="stylesheet" href="assets/css/grayshift.min.css">
+  <link rel="stylesheet" href="assets/css/fellowers.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap">
+</head>
+<body>
+  <nav class="navbar-default sticky-top bg-card shadow">
+    <div class="container d-flex align-items-center">
+      <a class="link-headings d-none d-lg-inline pt-4" href="#">
+        <h1 class="gi gi-fellowers mb-5 fs-4" width="111.66" height="40">Twitter Clone</h1>
+      </a>
+      <ul class="list-unstyled d-flex flex-grow-1 justify-content-between flex-lg-grow-0 mx-lg-auto">
+        <li class="nav-item">
+          <a class="nav-link active py-3 px-lg-5 py-lg-4" href="#">
+            <svg class="gi gi-home fs-5" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path d="M2.336 11.253l-.08.08C1.685 11.956 2.12 13 3 13h1.116l.892 7.124A1 1 0 0 0 6 21h4a1 1 0 0 0 1-1v-4.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5V20a1 1 0 0 0 1 1h4l.115-.007a1 1 0 0 0 .877-.869l.89-7.124H21c.92 0 1.352-1.137.664-1.747l-9-8a1 1 0 0 0-1.329 0l-9 8z"/>
+            </svg>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link  py-3 px-lg-5 py-lg-4" href="#" aria-current="page">
+            <svg class="gi gi-users fs-5" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9 13c1.93 0 3.677.78 4.943 2.043C14.787 14.4 15.848 14 17 14a5 5 0 0 1 5 5 1 1 0 0 1-1 1h-5a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1 7 7 0 0 1 7-7zM9 3a4 4 0 1 1 0 8 4 4 0 1 1 0-8zm8 10a3 3 0 1 0 0-6 3 3 0 1 0 0 6z"/>
+            </svg>
+          </a>
+        </li>
+
+      </ul>
+      <form>
+        <div class="input-group d-none d-lg-flex mr-3">
+          <div class="input-group-item">
+            <svg class="gi gi-search fs-3" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path d="M11 3a8 8 0 0 1 8 8c0 1.848-.627 3.55-1.68 4.905l3.386 3.388a1 1 0 0 1-1.32 1.497l-.094-.083-3.388-3.386C14.55 18.373 12.848 19 11 19a8 8 0 1 1 0-16zm0 2a6 6 0 1 0 0 12 6 6 0 1 0 0-12z"/>
+            </svg>
+          </div>
+          <input class="form-control disabled" style="max-width: 9rem;" type="search" placeholder="Search" aria-label="Search" >
+        </div>
+      </form>
+      <div class="dropdown">
+        <button class="btn p-0" data-toggle="dropdown" type="button" aria-expanded="false">
+          <span class="visually-hidden">Toggle Dropdown</span>
+          <svg class="gi d-none d-lg-inline-block rounded-circle" width="3rem" height="3rem" viewBox="0 0 24 24" fill="var(--auto)" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 0h24v24H0z"/>
+          </svg>
+        </button>
+        <div class="dropdown-menu dropdown-menu-right">
+          <a class="dropdown-item" href="#">Account</a>
+          <a class="dropdown-item" href="#">Logout</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- end of navbar -->
+
+  <div class="py-6">
+    <div class="container">
+
+        <!-- Write a Post Updade -->
+        <div class="modal fade" id="newPost" tabindex="-1" aria-labelledby="newPost" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header shadow-none pb-1">
+
+                <h2 class="fs-2" id="settingsModalLabel">Write a Post...</h2>
+                <button class="btn btn-auto d-inline-flex flex-shrink-0 align-items-center justify-content-center p-0 rounded-circle" data-dismiss="modal" style="width: 2.5rem; height: 2.5rem;" type="button" aria-label="Close">
+                  <svg class="gi gi-x fs-3" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7.613 6.2l.094.083L12 10.585l4.293-4.292.094-.083a1 1 0 0 1 1.403 1.403l-.083.094L13.415 12l4.292 4.293a1 1 0 0 1-1.32 1.497l-.094-.083L12 13.415l-4.293 4.292-.094.083a1 1 0 0 1-1.403-1.403l.083-.094L10.585 12 6.293 7.707a1 1 0 0 1 1.32-1.497z"/>
+                  </svg>
+                </button>
+              </div>
+              <div class="modal-body rounded-bottom">
+                <div class="tab-content">
+                  <div class="tab-pane fade show active" id="settingsAccount" role="tabpanel">
+                    <form>
+
+                      <textarea class="form-control form-control-lg mb-5" id="bio" rows="3" placeholder="Express yourself"></textarea>
+                      <label class="form-label" for="bio">Add Image </label>
+                      <input type="file" class="form-control form-control-lg mb-5" id="bio" ></input>
+
+                      <button class="btn btn-lg btn-primary w-100" type="submit">Post</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- write a post pop up end -->
+
+      <div class="row justify-content-center">
+        <div class="col-lg-12 col-xl-6">
+          <div class="row justify-content-center">
+
+            <div class="card py-0 mb-5" data-toggle="modal" data-target="#newPost">
+              <div class=" row pl-4 pt-4">
+                  <div class="col-auto p-0 m-0">
+                    <svg class="gi gi-edit-2 mr-3 fs-3 text-primary" width="1.3em" height="1.3em" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                        <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>                  </svg>
+                  </div>
+                  <div class="col-auto p-0 m-0">
+                      <span class="text-muted">Write a post</span>
+                    </div>
+
+
+
+              </div>
+
+              <hr class="p-0 m-0 mt-1 ">
+              <div class="row align-items-center ">
+                  <div class="col-sm-8 col-md-9">
+
+                  </div>
+              </div>
+              <div class="py-3">
+
+                <form>
+                          <div class="row align-items-center">
+                            <div class="col-sm-8 col-md-9">
+                              <div class="input-group mb-5 mb-sm-0">
+                                <div class="input-group-item pr-5 pl-0 bg-transparent">
+                                  <svg class="gi rounded-circle" width="3rem" height="3rem" viewBox="0 0 24 24" fill="var(--auto)" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M0 0h24v24H0z"></path>
+                                  </svg>
+                                </div>
+                                <input class="form-control p-0 bg-transparent" type="text" placeholder="What's on your mind?" aria-label="What's on your mind?">
+                              </div>
+                            </div>
+                            <div class="col-sm-4 col-md-3">
+                              <button class="btn btn-primary w-100" type="submit">Post</button>
+                            </div>
+                          </div>
+                        </form>
+
+
+              </div>
+            </div>
+
+            <!-- post with image -->
+            <div class="card mb-5 mb-lg-0">
+              <div class="d-flex mb-5">
+                <svg class="gi mr-3 rounded-circle" width="3rem" height="3rem" viewBox="0 0 24 24" fill="var(--auto)" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M0 0h24v24H0z"/>
+                </svg>
+                <div class="mr-auto overflow-hidden">
+                  <div class="d-flex">
+                    <h4 class="text-truncate mr-2 fs-1 lh-relaxed">
+                      <a class="link-headings" href="#">John Doe</a>
+                    </h4>
+                    <span class="mr-2">&middot;</span>
+                    <p>2h</p>
+                  </div>
+                  <p class="text-truncate">@johndoe</p>
+                </div>
+                <div class="dropdown ml-5">
+                  <button class="btn btn-auto d-inline-flex flex-shrink-0 align-items-center justify-content-center p-0 rounded-circle" data-toggle="dropdown" style="width: 1.5rem; height: 1.5rem;" type="button" aria-expanded="false">
+                    <span class="visually-hidden">Toggle Dropdown</span>
+                    <svg class="gi gi-more-horizontal" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M5 14a2 2 0 1 0 0-4 2 2 0 1 0 0 4zm7 0a2 2 0 1 0 0-4 2 2 0 1 0 0 4zm7 0a2 2 0 1 0 0-4 2 2 0 1 0 0 4z"/>
+                    </svg>
+                  </button>
+                  <div class="dropdown-menu dropdown-menu-right">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Action</a>
+                  </div>
+                </div>
+              </div>
+              <p class="mb-5">Gecko tails serve many purposes. They act as fuel tanks to store fat, and as camouflage to help them disappear into their environment.</p>
+              <div class="position-relative">
+                <center><img class="gi gi-reply rounded justify-centered w-100 " src="https://via.placeholder.com/150"  ></center>
+
+
+              </div>
+              <hr role="presentation">
+              <div class="row invisible-scrollbar flex-nowrap">
+                <div class="col">
+                  <div class="d-flex">
+                    <button class="btn link-body d-inline-flex p-0 mr-3" type="button">
+                      <svg class="gi gi-heart fs-3" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3.555 5a5.31 5.31 0 0 1 7.506 0l.938.938.94-.938a5.31 5.31 0 0 1 7.506 0 5.31 5.31 0 0 1 0 7.506l-7.737 7.737a1 1 0 0 1-1.414 0l-7.737-7.737a5.31 5.31 0 0 1 0-7.506z"/>
+                      </svg>
+                    </button>
+                    <p>170.9k</p>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="d-flex">
+                    <button class="btn link-body d-inline-flex p-0 mr-3" data-toggle="collapse" data-target="#collapseTwo" type="button" aria-expanded="false" aria-controls="collapseTwo">
+                      <svg class="gi gi-message-circle fs-3" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10.397 2.124c3.23-.5 6.4.52 8.674 2.804s3.307 5.446 2.804 8.674c-.636 4.077-3.92 7.457-7.987 8.22-1.957.366-3.95.156-5.765-.61-.16-.066-.398-.135-.644-.088h0l-4.283.856a.93.93 0 0 1-.196.02 1 1 0 0 1-.98-1.196h0l.857-4.288c.04-.193.01-.41-.09-.64-.767-1.813-.978-3.807-.61-5.765.763-4.067 4.143-7.35 8.22-7.987zM8 11a1 1 0 1 0 0 2 1 1 0 1 0 0-2zm4 0a1 1 0 1 0 0 2 1 1 0 1 0 0-2zm4 0a1 1 0 1 0 0 2 1 1 0 1 0 0-2z"/>
+                      </svg>
+                    </button>
+                    <p>4.7k</p>
+                  </div>
+                </div>
+
+              <div class="col"></div>
+                  <div class="col"></div>
+              </div>
+              <div class="collapse" id="collapseTwo">
+                <hr role="presentation">
+                <form>
+                  <div class="input-group">
+                    <div class="input-group-item">
+                      <svg class="gi fs-5 rounded-circle" width="1em" height="1em" viewBox="0 0 24 24" fill="var(--fill-active-bg)" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0 0h24v24H0z"/>
+                      </svg>
+                    </div>
+                    <input class="form-control form-control-lg" type="text" placeholder="Tweet your reply..." aria-label="Tweet your reply...">
+                    <div class="input-group-item">
+                      <button class="btn link-body p-0" type="button">
+                        <svg class="gi gi-smiley-outline fs-3" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2zm0 2a8 8 0 1 0 0 16 8 8 0 1 0 0-16zm-4 8h8a1 1 0 0 1 1 1 5 5 0 1 1-10 0 1 1 0 0 1 1-1z"/>
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                </form>
+                <hr role="presentation">
+                <div class="d-flex mb-5">
+                  <svg class="gi mr-3 rounded-circle" width="3rem" height="3rem" viewBox="0 0 24 24" fill="var(--auto)" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 0h24v24H0z"/>
+                  </svg>
+                  <div class="mr-auto overflow-hidden">
+                    <div class="d-flex">
+                      <h4 class="text-truncate mr-2 fs-1 lh-relaxed">
+                        <a class="link-headings" href="#">John Doe</a>
+                      </h4>
+                      <svg class="gi gi-badge mr-2 fs-3" width="1em" height="1em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path fill="var(--primary)" d="M8.828 19.66l-.13.062c-1.654.786-3.632.083-4.418-1.57-.428-.9-.428-1.946 0-2.847l.062-.13-.135-.048c-1.725-.614-2.627-2.5-2.013-4.235.334-.94 1.074-1.68 2.013-2.013l.135-.048-.062-.13c-.786-1.654-.083-3.632 1.57-4.418.9-.428 1.946-.428 2.847 0l.13.062.048-.135c.614-1.725 2.5-2.627 4.235-2.013.94.334 1.68 1.074 2.013 2.013l.048.135.13-.062c1.654-.786 3.632-.083 4.418 1.57.428.9.428 1.946 0 2.847l-.062.13.135.048c1.725.614 2.627 2.5 2.013 4.235-.334.94-1.074 1.68-2.013 2.013l-.135.048.062.13c.786 1.654.083 3.632-1.57 4.418-.9.428-1.946.428-2.847 0l-.13-.062-.048.135c-.614 1.725-2.5 2.627-4.235 2.013-.94-.334-1.68-1.074-2.013-2.013l-.048-.135z"/>
+                        <path fill="var(--white)" d="M14.293 9.293a1 1 0 0 1 1.497 1.32l-.083.094-4 4a1 1 0 0 1-1.32.083l-.094-.083-2-2a1 1 0 0 1 1.32-1.497l.094.083L11 12.585l3.293-3.292z"/>
+                      </svg>
+                      <span class="mr-2">&middot;</span>
+                      <p>16m</p>
+                    </div>
+                    <p class="text-truncate">@johndoe</p>
+                  </div>
+                  <div class="dropdown ml-5">
+                    <button class="btn btn-auto d-inline-flex flex-shrink-0 align-items-center justify-content-center p-0 rounded-circle" data-toggle="dropdown" style="width: 1.5rem; height: 1.5rem;" type="button" aria-expanded="false">
+                      <span class="visually-hidden">Toggle Dropdown</span>
+                      <svg class="gi gi-more-horizontal" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5 14a2 2 0 1 0 0-4 2 2 0 1 0 0 4zm7 0a2 2 0 1 0 0-4 2 2 0 1 0 0 4zm7 0a2 2 0 1 0 0-4 2 2 0 1 0 0 4z"/>
+                      </svg>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right">
+                      <a class="dropdown-item" href="#">Follow @johndoe</a>
+                      <a class="dropdown-item" href="#">Mute @johndoe</a>
+                      <a class="dropdown-item" href="#">Block @johndoe</a>
+                      <a class="dropdown-item" href="#">Report tweet</a>
+                    </div>
+                  </div>
+                </div>
+                <p>Over a long period of time, geckos have developed special physical features to help them survive and avoid predators.</p>
+                <hr role="presentation">
+                <div class="row invisible-scrollbar flex-nowrap">
+                  <div class="col">
+                    <div class="d-flex">
+                      <button class="btn link-body d-inline-flex p-0 mr-3" type="button">
+                        <svg class="gi gi-message-circle fs-3" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M10.397 2.124c3.23-.5 6.4.52 8.674 2.804s3.307 5.446 2.804 8.674c-.636 4.077-3.92 7.457-7.987 8.22-1.957.366-3.95.156-5.765-.61-.16-.066-.398-.135-.644-.088h0l-4.283.856a.93.93 0 0 1-.196.02 1 1 0 0 1-.98-1.196h0l.857-4.288c.04-.193.01-.41-.09-.64-.767-1.813-.978-3.807-.61-5.765.763-4.067 4.143-7.35 8.22-7.987zM8 11a1 1 0 1 0 0 2 1 1 0 1 0 0-2zm4 0a1 1 0 1 0 0 2 1 1 0 1 0 0-2zm4 0a1 1 0 1 0 0 2 1 1 0 1 0 0-2z"/>
+                        </svg>
+                      </button>
+                      <p>213</p>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="d-flex">
+                      <button class="btn link-body d-inline-flex p-0 mr-3" type="button">
+                        <svg class="gi gi-flip-vertical fs-3" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M12 20a1 1 0 0 0 .117-1.993L12 18H8a2 2 0 0 1-1.995-1.851L6 16V7.416l1.293 1.29a1 1 0 0 0 1.32.083l.094-.083a1 1 0 0 0 .083-1.32l-.083-.094-3-3a1.01 1.01 0 0 0-.112-.097l-.11-.072-.113-.053-.105-.035-.15-.03L5 4l-.075.003-.125.017-.11.03-.11.044-.097.052-.092.064-.094.083-3 3a1 1 0 0 0 1.32 1.497l.094-.083L4 7.416V16a4 4 0 0 0 3.8 3.995L8 20h4zm0-16a1 1 0 0 0-.117 1.993L12 6h4a2 2 0 0 1 1.995 1.851L18 8v8.584l-1.293-1.29a1 1 0 0 0-1.32-.083l-.094.083a1 1 0 0 0-.083 1.32l.083.094 3 3a1.01 1.01 0 0 0 .112.097l.11.072.113.053.105.035.15.03L19 20l.075-.003.125-.017.11-.03.11-.044.097-.052.092-.064.094-.083 3-3a1 1 0 0 0-1.32-1.497l-.094.083L20 16.584V8a4 4 0 0 0-3.8-3.995L16 4h-4z"/>
+                        </svg>
+                      </button>
+                      <p>546</p>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="d-flex">
+                      <button class="btn link-body d-inline-flex p-0 mr-3" type="button">
+                        <svg class="gi gi-heart fs-3" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M3.555 5a5.31 5.31 0 0 1 7.506 0l.938.938.94-.938a5.31 5.31 0 0 1 7.506 0 5.31 5.31 0 0 1 0 7.506l-7.737 7.737a1 1 0 0 1-1.414 0l-7.737-7.737a5.31 5.31 0 0 1 0-7.506z"/>
+                        </svg>
+                      </button>
+                      <p>3.9k</p>
+                    </div>
+                  </div>
+                  <div class="col-auto">
+                    <div class="d-flex">
+                      <button class="btn link-body d-inline-flex p-0" type="button">
+                        <svg class="gi gi-reply fs-3" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M19 14.5a1 1 0 0 1 .993.883L20 15.5v2a3 3 0 0 1-2.824 2.995L17 20.5H7a3 3 0 0 1-2.995-2.824L4 17.5v-2a1 1 0 0 1 1.993-.117L6 15.5v2a1 1 0 0 0 .883.993L7 18.5h10a1 1 0 0 0 .993-.883L18 17.5v-2a1 1 0 0 1 1-1zm-7-11l.117.007.15.03.105.035.113.053.11.072a1.01 1.01 0 0 1 .112.097h0l4 4 .083.094a1 1 0 0 1-.083 1.32h0l-.094.083a1 1 0 0 1-1.32-.083h0L13 6.915V14.5l-.007.117A1 1 0 0 1 11 14.5h0V6.915L8.707 9.207l-.094.083a1 1 0 0 1-1.32-1.497h0l4-4 .094-.083.092-.064.097-.052.11-.044.11-.03.125-.017L12 3.5z"/>
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <hr role="presentation">
+                <div class="d-flex mb-5">
+                  <svg class="gi mr-3 rounded-circle" width="3rem" height="3rem" viewBox="0 0 24 24" fill="var(--auto)" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 0h24v24H0z"/>
+                  </svg>
+                  <div class="mr-auto overflow-hidden">
+                    <div class="d-flex">
+                      <h4 class="text-truncate mr-2 fs-1 lh-relaxed">
+                        <a class="link-headings" href="#">John Doe</a>
+                      </h4>
+                      <svg class="gi gi-badge mr-2 fs-3" width="1em" height="1em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path fill="var(--primary)" d="M8.828 19.66l-.13.062c-1.654.786-3.632.083-4.418-1.57-.428-.9-.428-1.946 0-2.847l.062-.13-.135-.048c-1.725-.614-2.627-2.5-2.013-4.235.334-.94 1.074-1.68 2.013-2.013l.135-.048-.062-.13c-.786-1.654-.083-3.632 1.57-4.418.9-.428 1.946-.428 2.847 0l.13.062.048-.135c.614-1.725 2.5-2.627 4.235-2.013.94.334 1.68 1.074 2.013 2.013l.048.135.13-.062c1.654-.786 3.632-.083 4.418 1.57.428.9.428 1.946 0 2.847l-.062.13.135.048c1.725.614 2.627 2.5 2.013 4.235-.334.94-1.074 1.68-2.013 2.013l-.135.048.062.13c.786 1.654.083 3.632-1.57 4.418-.9.428-1.946.428-2.847 0l-.13-.062-.048.135c-.614 1.725-2.5 2.627-4.235 2.013-.94-.334-1.68-1.074-2.013-2.013l-.048-.135z"/>
+                        <path fill="var(--white)" d="M14.293 9.293a1 1 0 0 1 1.497 1.32l-.083.094-4 4a1 1 0 0 1-1.32.083l-.094-.083-2-2a1 1 0 0 1 1.32-1.497l.094.083L11 12.585l3.293-3.292z"/>
+                      </svg>
+                      <span class="mr-2">&middot;</span>
+                      <p>8m</p>
+                    </div>
+                    <p class="text-truncate">@johndoe</p>
+                  </div>
+                  <div class="dropdown ml-5">
+                    <button class="btn btn-auto d-inline-flex flex-shrink-0 align-items-center justify-content-center p-0 rounded-circle" data-toggle="dropdown" style="width: 1.5rem; height: 1.5rem;" type="button" aria-expanded="false">
+                      <span class="visually-hidden">Toggle Dropdown</span>
+                      <svg class="gi gi-more-horizontal" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5 14a2 2 0 1 0 0-4 2 2 0 1 0 0 4zm7 0a2 2 0 1 0 0-4 2 2 0 1 0 0 4zm7 0a2 2 0 1 0 0-4 2 2 0 1 0 0 4z"/>
+                      </svg>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right">
+                      <a class="dropdown-item" href="#">Follow @johndoe</a>
+                      <a class="dropdown-item" href="#">Mute @johndoe</a>
+                      <a class="dropdown-item" href="#">Block @johndoe</a>
+                      <a class="dropdown-item" href="#">Report tweet</a>
+                    </div>
+                  </div>
+                </div>
+                <p>Most geckos make noises such as chirping, barking, and clicking when they are defending their territory or attracting a mate.</p>
+                <hr role="presentation">
+                <div class="row invisible-scrollbar flex-nowrap">
+                  <div class="col">
+                    <div class="d-flex">
+                      <button class="btn link-body d-inline-flex p-0 mr-3" type="button">
+                        <svg class="gi gi-message-circle fs-3" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M10.397 2.124c3.23-.5 6.4.52 8.674 2.804s3.307 5.446 2.804 8.674c-.636 4.077-3.92 7.457-7.987 8.22-1.957.366-3.95.156-5.765-.61-.16-.066-.398-.135-.644-.088h0l-4.283.856a.93.93 0 0 1-.196.02 1 1 0 0 1-.98-1.196h0l.857-4.288c.04-.193.01-.41-.09-.64-.767-1.813-.978-3.807-.61-5.765.763-4.067 4.143-7.35 8.22-7.987zM8 11a1 1 0 1 0 0 2 1 1 0 1 0 0-2zm4 0a1 1 0 1 0 0 2 1 1 0 1 0 0-2zm4 0a1 1 0 1 0 0 2 1 1 0 1 0 0-2z"/>
+                        </svg>
+                      </button>
+                      <p>101</p>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="d-flex">
+                      <button class="btn link-body d-inline-flex p-0 mr-3" type="button">
+                        <svg class="gi gi-flip-vertical fs-3" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M12 20a1 1 0 0 0 .117-1.993L12 18H8a2 2 0 0 1-1.995-1.851L6 16V7.416l1.293 1.29a1 1 0 0 0 1.32.083l.094-.083a1 1 0 0 0 .083-1.32l-.083-.094-3-3a1.01 1.01 0 0 0-.112-.097l-.11-.072-.113-.053-.105-.035-.15-.03L5 4l-.075.003-.125.017-.11.03-.11.044-.097.052-.092.064-.094.083-3 3a1 1 0 0 0 1.32 1.497l.094-.083L4 7.416V16a4 4 0 0 0 3.8 3.995L8 20h4zm0-16a1 1 0 0 0-.117 1.993L12 6h4a2 2 0 0 1 1.995 1.851L18 8v8.584l-1.293-1.29a1 1 0 0 0-1.32-.083l-.094.083a1 1 0 0 0-.083 1.32l.083.094 3 3a1.01 1.01 0 0 0 .112.097l.11.072.113.053.105.035.15.03L19 20l.075-.003.125-.017.11-.03.11-.044.097-.052.092-.064.094-.083 3-3a1 1 0 0 0-1.32-1.497l-.094.083L20 16.584V8a4 4 0 0 0-3.8-3.995L16 4h-4z"/>
+                        </svg>
+                      </button>
+                      <p>127</p>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="d-flex">
+                      <button class="btn link-body d-inline-flex p-0 mr-3" type="button">
+                        <svg class="gi gi-heart fs-3" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M3.555 5a5.31 5.31 0 0 1 7.506 0l.938.938.94-.938a5.31 5.31 0 0 1 7.506 0 5.31 5.31 0 0 1 0 7.506l-7.737 7.737a1 1 0 0 1-1.414 0l-7.737-7.737a5.31 5.31 0 0 1 0-7.506z"/>
+                        </svg>
+                      </button>
+                      <p>2.1k</p>
+                    </div>
+                  </div>
+                  <div class="col-auto">
+                    <div class="d-flex">
+                      <button class="btn link-body d-inline-flex p-0" type="button">
+                        <svg class="gi gi-reply fs-3" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M19 14.5a1 1 0 0 1 .993.883L20 15.5v2a3 3 0 0 1-2.824 2.995L17 20.5H7a3 3 0 0 1-2.995-2.824L4 17.5v-2a1 1 0 0 1 1.993-.117L6 15.5v2a1 1 0 0 0 .883.993L7 18.5h10a1 1 0 0 0 .993-.883L18 17.5v-2a1 1 0 0 1 1-1zm-7-11l.117.007.15.03.105.035.113.053.11.072a1.01 1.01 0 0 1 .112.097h0l4 4 .083.094a1 1 0 0 1-.083 1.32h0l-.094.083a1 1 0 0 1-1.32-.083h0L13 6.915V14.5l-.007.117A1 1 0 0 1 11 14.5h0V6.915L8.707 9.207l-.094.083a1 1 0 0 1-1.32-1.497h0l4-4 .094-.083.092-.064.097-.052.11-.044.11-.03.125-.017L12 3.5z"/>
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <hr role="presentation">
+                <button class="btn btn-primary w-100" type="button">Show more</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="settingsModal" tabindex="-1" aria-labelledby="settingsModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header shadow-none">
+            <h2 class="fs-2" id="settingsModalLabel">Settings</h2>
+            <button class="btn btn-auto d-inline-flex flex-shrink-0 align-items-center justify-content-center p-0 rounded-circle" data-dismiss="modal" style="width: 2.5rem; height: 2.5rem;" type="button" aria-label="Close">
+              <svg class="gi gi-x fs-3" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7.613 6.2l.094.083L12 10.585l4.293-4.292.094-.083a1 1 0 0 1 1.403 1.403l-.083.094L13.415 12l4.292 4.293a1 1 0 0 1-1.32 1.497l-.094-.083L12 13.415l-4.293 4.292-.094.083a1 1 0 0 1-1.403-1.403l.083-.094L10.585 12 6.293 7.707a1 1 0 0 1 1.32-1.497z"/>
+              </svg>
+            </button>
+          </div>
+          <ul class="nav nav-tabs nav-justified flex-column flex-sm-row rounded-0" style="padding: .75rem;" role="tablist">
+            <li class="nav-item text-left text-sm-center">
+              <a class="nav-link active" data-toggle="tab" style="padding: .75rem;" href="#settingsAccount" role="tab" aria-controls="settingsAccount" aria-selected="true">Account</a>
+            </li>
+            <li class="nav-item text-left text-sm-center">
+              <a class="nav-link" data-toggle="tab" style="padding: .75rem;" href="#settingsSecurity" role="tab" aria-controls="settingsSecurity" aria-selected="false">Security</a>
+            </li>
+            <li class="nav-item text-left text-sm-center">
+              <a class="nav-link" data-toggle="tab" style="padding: .75rem;" href="#settingsNotifications" role="tab" aria-controls="settingsNotifications" aria-selected="false">Notifications</a>
+            </li>
+          </ul>
+          <div class="modal-body rounded-bottom">
+            <div class="tab-content">
+              <div class="tab-pane fade show active" id="settingsAccount" role="tabpanel">
+                <form>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label class="form-label" for="name">Name</label>
+                      <input class="form-control form-control-lg mb-5" id="name" type="text" placeholder="John Doe">
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label" for="phone">Phone</label>
+                      <input class="form-control form-control-lg mb-5" id="phone" type="text" placeholder="(123) 456-7890">
+                    </div>
+                  </div>
+                  <label class="form-label" for="email">Email</label>
+                  <input class="form-control form-control-lg mb-5" id="email" type="email" placeholder="name@address.com">
+                  <label class="form-label" for="bio">Bio</label>
+                  <textarea class="form-control form-control-lg mb-5" id="bio" rows="3" placeholder="Express yourself"></textarea>
+                  <button class="btn btn-lg btn-primary w-100" type="submit">Save changes</button>
+                </form>
+              </div>
+              <div class="tab-pane fade" id="settingsSecurity" role="tabpanel">
+                <form>
+                  <label class="form-label" for="oldPassword">Old Password</label>
+                  <input class="form-control form-control-lg mb-5" id="oldPassword" type="password" placeholder="Old password">
+                  <label class="form-label" for="newPassword">New password</label>
+                  <input class="form-control form-control-lg mb-5" id="newPassword" type="password" placeholder="New password">
+                  <button class="btn btn-lg btn-primary w-100" type="submit">Change password</button>
+                </form>
+              </div>
+              <div class="tab-pane fade" id="settingsNotifications" role="tabpanel">
+                <div class="d-flex align-items-center justify-content-between">
+                  <div class="mr-5">
+                    <h4 class="mb-2 fs-1 lh-tight">Calls</h4>
+                    <p>Sound and pop up on screen</p>
+                  </div>
+                  <div class="form-check form-switch pl-0 fs-3">
+                    <input class="form-check-input mt-0 ml-0" type="checkbox" aria-label="Calls switch" checked>
+                  </div>
+                </div>
+                <hr role="presentation">
+                <div class="d-flex align-items-center justify-content-between">
+                  <div class="mr-5">
+                    <h4 class="mb-2 fs-1 lh-tight">Recording</h4>
+                    <p>No sound or visual interruption</p>
+                  </div>
+                  <div class="form-check form-switch pl-0 fs-3">
+                    <input class="form-check-input mt-0 ml-0" type="checkbox" aria-label="Recording switch">
+                  </div>
+                </div>
+                <hr role="presentation">
+                <div class="d-flex align-items-center justify-content-between">
+                  <div class="mr-5">
+                    <h4 class="mb-2 fs-1 lh-tight">Messages</h4>
+                    <p>Sound and pop up on screen</p>
+                  </div>
+                  <div class="form-check form-switch pl-0 fs-3">
+                    <input class="form-check-input mt-0 ml-0" type="checkbox" aria-label="Messages switch" checked>
+                  </div>
+                </div>
+                <hr role="presentation">
+                <div class="d-flex align-items-center justify-content-between">
+                  <div class="mr-5">
+                    <h4 class="mb-2 fs-1 lh-tight">Voicemail</h4>
+                    <p>Sound and pop up on screen</p>
+                  </div>
+                  <div class="form-check form-switch pl-0 fs-3">
+                    <input class="form-check-input mt-0 ml-0" type="checkbox" aria-label="Voicemail switch">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="auditoryModal" tabindex="-1" aria-labelledby="auditoryModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header shadow-none">
+            <h2 class="fs-2" id="auditoryModalLabel">Auditory</h2>
+            <button class="btn btn-auto d-inline-flex flex-shrink-0 align-items-center justify-content-center p-0 rounded-circle" data-dismiss="modal" style="width: 2.5rem; height: 2.5rem;" type="button" aria-label="Close">
+              <svg class="gi gi-x fs-3" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7.613 6.2l.094.083L12 10.585l4.293-4.292.094-.083a1 1 0 0 1 1.403 1.403l-.083.094L13.415 12l4.292 4.293a1 1 0 0 1-1.32 1.497l-.094-.083L12 13.415l-4.293 4.292-.094.083a1 1 0 0 1-1.403-1.403l.083-.094L10.585 12 6.293 7.707a1 1 0 0 1 1.32-1.497z"/>
+              </svg>
+            </button>
+          </div>
+          <ul class="nav nav-tabs nav-justified flex-shrink-0 rounded-0" style="padding: .75rem;" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" data-toggle="tab" style="padding: .75rem;" href="#following" role="tab" aria-controls="following" aria-selected="true">Following</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="tab" style="padding: .75rem;" href="#followers" role="tab" aria-controls="followers" aria-selected="false">Followers</a>
+            </li>
+          </ul>
+          <div class="modal-body rounded-bottom">
+            <div class="tab-content">
+              <div class="tab-pane fade show active" id="following" role="tabpanel">
+                <form>
+                  <div class="input-group mb-5">
+                    <div class="input-group-item">
+                      <svg class="gi gi-funnel-outline fs-3" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M19 3a1 1 0 0 1 .874 1.486h0L15 13.258V20a1 1 0 0 1-1.508.861h0l-.092-.06-4-3A1 1 0 0 1 9 17h0v-3.74L4.126 4.486a1 1 0 0 1 .762-1.48h0L5 3zm-1.7 2H6.7l4.174 7.514a1 1 0 0 1 .118.359h0L11 13v3.5l2 1.5v-5a1 1 0 0 1 .071-.371h0l.054-.115L17.3 5z"/>
+                      </svg>
+                    </div>
+                    <input class="form-control form-control-lg" type="search" placeholder="Filter" aria-label="Filter">
+                  </div>
+                </form>
+                <h3 class="fs-2">Following</h3>
+                <hr role="presentation">
+                <div class="d-flex align-items-center">
+                  <svg class="gi mr-3 rounded-circle" width="3rem" height="3rem" viewBox="0 0 24 24" fill="var(--auto)" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 0h24v24H0z"/>
+                  </svg>
+                  <div class="mr-auto overflow-hidden">
+                    <div class="d-flex">
+                      <h4 class="text-truncate mr-2 fs-1 lh-relaxed">
+                        <a class="link-headings" href="#">John Doe</a>
+                      </h4>
+                      <svg class="gi gi-badge fs-3" width="1em" height="1em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path fill="var(--primary)" d="M8.828 19.66l-.13.062c-1.654.786-3.632.083-4.418-1.57-.428-.9-.428-1.946 0-2.847l.062-.13-.135-.048c-1.725-.614-2.627-2.5-2.013-4.235.334-.94 1.074-1.68 2.013-2.013l.135-.048-.062-.13c-.786-1.654-.083-3.632 1.57-4.418.9-.428 1.946-.428 2.847 0l.13.062.048-.135c.614-1.725 2.5-2.627 4.235-2.013.94.334 1.68 1.074 2.013 2.013l.048.135.13-.062c1.654-.786 3.632-.083 4.418 1.57.428.9.428 1.946 0 2.847l-.062.13.135.048c1.725.614 2.627 2.5 2.013 4.235-.334.94-1.074 1.68-2.013 2.013l-.135.048.062.13c.786 1.654.083 3.632-1.57 4.418-.9.428-1.946.428-2.847 0l-.13-.062-.048.135c-.614 1.725-2.5 2.627-4.235 2.013-.94-.334-1.68-1.074-2.013-2.013l-.048-.135z"/>
+                        <path fill="var(--white)" d="M14.293 9.293a1 1 0 0 1 1.497 1.32l-.083.094-4 4a1 1 0 0 1-1.32.083l-.094-.083-2-2a1 1 0 0 1 1.32-1.497l.094.083L11 12.585l3.293-3.292z"/>
+                      </svg>
+                    </div>
+                    <p class="text-truncate">@johndoe</p>
+                  </div>
+                  <button class="btn btn-primary d-inline-flex flex-shrink-0 align-items-center justify-content-center p-0 ml-5 rounded-sm" style="width: 1.5rem; height: 1.5rem;" type="button">
+                    <svg class="gi gi-double-check" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M16.116 6.213a1 1 0 0 0-1.403.171l-7.055 9.008-3.38-4.197a1 1 0 1 0-1.559 1.254l4.17 5.178c.19.236.477.373.78.373h.007a1 1 0 0 0 .78-.384l7.83-10a1 1 0 0 0-.171-1.403m5 0c-.435-.342-1.062-.264-1.403.17l-7.055 9.008-.604-.75-1.265 1.617 1.1 1.367c.19.236.477.373.78.373h.007a1 1 0 0 0 .78-.384l7.83-10a1 1 0 0 0-.171-1.403M8.213 13.06l1.267-1.616-.2-.25a1 1 0 1 0-1.558 1.254l.492.61z"/>
+                    </svg>
+                  </button>
+                </div>
+                <hr role="presentation">
+                <div class="d-flex align-items-center">
+                  <svg class="gi mr-3 rounded-circle" width="3rem" height="3rem" viewBox="0 0 24 24" fill="var(--auto)" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 0h24v24H0z"/>
+                  </svg>
+                  <div class="mr-auto overflow-hidden">
+                    <div class="d-flex">
+                      <h4 class="text-truncate mr-2 fs-1 lh-relaxed">
+                        <a class="link-headings" href="#">John Doe</a>
+                      </h4>
+                      <svg class="gi gi-badge fs-3" width="1em" height="1em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path fill="var(--primary)" d="M8.828 19.66l-.13.062c-1.654.786-3.632.083-4.418-1.57-.428-.9-.428-1.946 0-2.847l.062-.13-.135-.048c-1.725-.614-2.627-2.5-2.013-4.235.334-.94 1.074-1.68 2.013-2.013l.135-.048-.062-.13c-.786-1.654-.083-3.632 1.57-4.418.9-.428 1.946-.428 2.847 0l.13.062.048-.135c.614-1.725 2.5-2.627 4.235-2.013.94.334 1.68 1.074 2.013 2.013l.048.135.13-.062c1.654-.786 3.632-.083 4.418 1.57.428.9.428 1.946 0 2.847l-.062.13.135.048c1.725.614 2.627 2.5 2.013 4.235-.334.94-1.074 1.68-2.013 2.013l-.135.048.062.13c.786 1.654.083 3.632-1.57 4.418-.9.428-1.946.428-2.847 0l-.13-.062-.048.135c-.614 1.725-2.5 2.627-4.235 2.013-.94-.334-1.68-1.074-2.013-2.013l-.048-.135z"/>
+                        <path fill="var(--white)" d="M14.293 9.293a1 1 0 0 1 1.497 1.32l-.083.094-4 4a1 1 0 0 1-1.32.083l-.094-.083-2-2a1 1 0 0 1 1.32-1.497l.094.083L11 12.585l3.293-3.292z"/>
+                      </svg>
+                    </div>
+                    <p class="text-truncate">@johndoe</p>
+                  </div>
+                  <button class="btn btn-primary d-inline-flex flex-shrink-0 align-items-center justify-content-center p-0 ml-5 rounded-sm" style="width: 1.5rem; height: 1.5rem;" type="button">
+                    <svg class="gi gi-double-check" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M16.116 6.213a1 1 0 0 0-1.403.171l-7.055 9.008-3.38-4.197a1 1 0 1 0-1.559 1.254l4.17 5.178c.19.236.477.373.78.373h.007a1 1 0 0 0 .78-.384l7.83-10a1 1 0 0 0-.171-1.403m5 0c-.435-.342-1.062-.264-1.403.17l-7.055 9.008-.604-.75-1.265 1.617 1.1 1.367c.19.236.477.373.78.373h.007a1 1 0 0 0 .78-.384l7.83-10a1 1 0 0 0-.171-1.403M8.213 13.06l1.267-1.616-.2-.25a1 1 0 1 0-1.558 1.254l.492.61z"/>
+                    </svg>
+                  </button>
+                </div>
+                <hr role="presentation">
+                <div class="d-flex align-items-center">
+                  <svg class="gi mr-3 rounded-circle" width="3rem" height="3rem" viewBox="0 0 24 24" fill="var(--auto)" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 0h24v24H0z"/>
+                  </svg>
+                  <div class="mr-auto overflow-hidden">
+                    <div class="d-flex">
+                      <h4 class="text-truncate mr-2 fs-1 lh-relaxed">
+                        <a class="link-headings" href="#">John Doe</a>
+                      </h4>
+                      <svg class="gi gi-badge fs-3" width="1em" height="1em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path fill="var(--primary)" d="M8.828 19.66l-.13.062c-1.654.786-3.632.083-4.418-1.57-.428-.9-.428-1.946 0-2.847l.062-.13-.135-.048c-1.725-.614-2.627-2.5-2.013-4.235.334-.94 1.074-1.68 2.013-2.013l.135-.048-.062-.13c-.786-1.654-.083-3.632 1.57-4.418.9-.428 1.946-.428 2.847 0l.13.062.048-.135c.614-1.725 2.5-2.627 4.235-2.013.94.334 1.68 1.074 2.013 2.013l.048.135.13-.062c1.654-.786 3.632-.083 4.418 1.57.428.9.428 1.946 0 2.847l-.062.13.135.048c1.725.614 2.627 2.5 2.013 4.235-.334.94-1.074 1.68-2.013 2.013l-.135.048.062.13c.786 1.654.083 3.632-1.57 4.418-.9.428-1.946.428-2.847 0l-.13-.062-.048.135c-.614 1.725-2.5 2.627-4.235 2.013-.94-.334-1.68-1.074-2.013-2.013l-.048-.135z"/>
+                        <path fill="var(--white)" d="M14.293 9.293a1 1 0 0 1 1.497 1.32l-.083.094-4 4a1 1 0 0 1-1.32.083l-.094-.083-2-2a1 1 0 0 1 1.32-1.497l.094.083L11 12.585l3.293-3.292z"/>
+                      </svg>
+                    </div>
+                    <p class="text-truncate">@johndoe</p>
+                  </div>
+                  <button class="btn btn-primary d-inline-flex flex-shrink-0 align-items-center justify-content-center p-0 ml-5 rounded-sm" style="width: 1.5rem; height: 1.5rem;" type="button">
+                    <svg class="gi gi-double-check" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M16.116 6.213a1 1 0 0 0-1.403.171l-7.055 9.008-3.38-4.197a1 1 0 1 0-1.559 1.254l4.17 5.178c.19.236.477.373.78.373h.007a1 1 0 0 0 .78-.384l7.83-10a1 1 0 0 0-.171-1.403m5 0c-.435-.342-1.062-.264-1.403.17l-7.055 9.008-.604-.75-1.265 1.617 1.1 1.367c.19.236.477.373.78.373h.007a1 1 0 0 0 .78-.384l7.83-10a1 1 0 0 0-.171-1.403M8.213 13.06l1.267-1.616-.2-.25a1 1 0 1 0-1.558 1.254l.492.61z"/>
+                    </svg>
+                  </button>
+                </div>
+                <hr role="presentation">
+                <div class="d-flex align-items-center">
+                  <svg class="gi mr-3 rounded-circle" width="3rem" height="3rem" viewBox="0 0 24 24" fill="var(--auto)" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 0h24v24H0z"/>
+                  </svg>
+                  <div class="mr-auto overflow-hidden">
+                    <div class="d-flex">
+                      <h4 class="text-truncate mr-2 fs-1 lh-relaxed">
+                        <a class="link-headings" href="#">John Doe</a>
+                      </h4>
+                      <svg class="gi gi-badge fs-3" width="1em" height="1em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path fill="var(--primary)" d="M8.828 19.66l-.13.062c-1.654.786-3.632.083-4.418-1.57-.428-.9-.428-1.946 0-2.847l.062-.13-.135-.048c-1.725-.614-2.627-2.5-2.013-4.235.334-.94 1.074-1.68 2.013-2.013l.135-.048-.062-.13c-.786-1.654-.083-3.632 1.57-4.418.9-.428 1.946-.428 2.847 0l.13.062.048-.135c.614-1.725 2.5-2.627 4.235-2.013.94.334 1.68 1.074 2.013 2.013l.048.135.13-.062c1.654-.786 3.632-.083 4.418 1.57.428.9.428 1.946 0 2.847l-.062.13.135.048c1.725.614 2.627 2.5 2.013 4.235-.334.94-1.074 1.68-2.013 2.013l-.135.048.062.13c.786 1.654.083 3.632-1.57 4.418-.9.428-1.946.428-2.847 0l-.13-.062-.048.135c-.614 1.725-2.5 2.627-4.235 2.013-.94-.334-1.68-1.074-2.013-2.013l-.048-.135z"/>
+                        <path fill="var(--white)" d="M14.293 9.293a1 1 0 0 1 1.497 1.32l-.083.094-4 4a1 1 0 0 1-1.32.083l-.094-.083-2-2a1 1 0 0 1 1.32-1.497l.094.083L11 12.585l3.293-3.292z"/>
+                      </svg>
+                    </div>
+                    <p class="text-truncate">@johndoe</p>
+                  </div>
+                  <button class="btn btn-primary d-inline-flex flex-shrink-0 align-items-center justify-content-center p-0 ml-5 rounded-sm" style="width: 1.5rem; height: 1.5rem;" type="button">
+                    <svg class="gi gi-double-check" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M16.116 6.213a1 1 0 0 0-1.403.171l-7.055 9.008-3.38-4.197a1 1 0 1 0-1.559 1.254l4.17 5.178c.19.236.477.373.78.373h.007a1 1 0 0 0 .78-.384l7.83-10a1 1 0 0 0-.171-1.403m5 0c-.435-.342-1.062-.264-1.403.17l-7.055 9.008-.604-.75-1.265 1.617 1.1 1.367c.19.236.477.373.78.373h.007a1 1 0 0 0 .78-.384l7.83-10a1 1 0 0 0-.171-1.403M8.213 13.06l1.267-1.616-.2-.25a1 1 0 1 0-1.558 1.254l.492.61z"/>
+                    </svg>
+                  </button>
+                </div>
+                <hr role="presentation">
+                <div class="d-flex align-items-center">
+                  <svg class="gi mr-3 rounded-circle" width="3rem" height="3rem" viewBox="0 0 24 24" fill="var(--auto)" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 0h24v24H0z"/>
+                  </svg>
+                  <div class="mr-auto overflow-hidden">
+                    <div class="d-flex">
+                      <h4 class="text-truncate mr-2 fs-1 lh-relaxed">
+                        <a class="link-headings" href="#">John Doe</a>
+                      </h4>
+                      <svg class="gi gi-badge fs-3" width="1em" height="1em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path fill="var(--primary)" d="M8.828 19.66l-.13.062c-1.654.786-3.632.083-4.418-1.57-.428-.9-.428-1.946 0-2.847l.062-.13-.135-.048c-1.725-.614-2.627-2.5-2.013-4.235.334-.94 1.074-1.68 2.013-2.013l.135-.048-.062-.13c-.786-1.654-.083-3.632 1.57-4.418.9-.428 1.946-.428 2.847 0l.13.062.048-.135c.614-1.725 2.5-2.627 4.235-2.013.94.334 1.68 1.074 2.013 2.013l.048.135.13-.062c1.654-.786 3.632-.083 4.418 1.57.428.9.428 1.946 0 2.847l-.062.13.135.048c1.725.614 2.627 2.5 2.013 4.235-.334.94-1.074 1.68-2.013 2.013l-.135.048.062.13c.786 1.654.083 3.632-1.57 4.418-.9.428-1.946.428-2.847 0l-.13-.062-.048.135c-.614 1.725-2.5 2.627-4.235 2.013-.94-.334-1.68-1.074-2.013-2.013l-.048-.135z"/>
+                        <path fill="var(--white)" d="M14.293 9.293a1 1 0 0 1 1.497 1.32l-.083.094-4 4a1 1 0 0 1-1.32.083l-.094-.083-2-2a1 1 0 0 1 1.32-1.497l.094.083L11 12.585l3.293-3.292z"/>
+                      </svg>
+                    </div>
+                    <p class="text-truncate">@johndoe</p>
+                  </div>
+                  <button class="btn btn-primary d-inline-flex flex-shrink-0 align-items-center justify-content-center p-0 ml-5 rounded-sm" style="width: 1.5rem; height: 1.5rem;" type="button">
+                    <svg class="gi gi-double-check" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M16.116 6.213a1 1 0 0 0-1.403.171l-7.055 9.008-3.38-4.197a1 1 0 1 0-1.559 1.254l4.17 5.178c.19.236.477.373.78.373h.007a1 1 0 0 0 .78-.384l7.83-10a1 1 0 0 0-.171-1.403m5 0c-.435-.342-1.062-.264-1.403.17l-7.055 9.008-.604-.75-1.265 1.617 1.1 1.367c.19.236.477.373.78.373h.007a1 1 0 0 0 .78-.384l7.83-10a1 1 0 0 0-.171-1.403M8.213 13.06l1.267-1.616-.2-.25a1 1 0 1 0-1.558 1.254l.492.61z"/>
+                    </svg>
+                  </button>
+                </div>
+                <hr role="presentation">
+                <div class="d-flex align-items-center">
+                  <svg class="gi mr-3 rounded-circle" width="3rem" height="3rem" viewBox="0 0 24 24" fill="var(--auto)" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 0h24v24H0z"/>
+                  </svg>
+                  <div class="mr-auto overflow-hidden">
+                    <div class="d-flex">
+                      <h4 class="text-truncate mr-2 fs-1 lh-relaxed">
+                        <a class="link-headings" href="#">John Doe</a>
+                      </h4>
+                      <svg class="gi gi-badge fs-3" width="1em" height="1em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path fill="var(--primary)" d="M8.828 19.66l-.13.062c-1.654.786-3.632.083-4.418-1.57-.428-.9-.428-1.946 0-2.847l.062-.13-.135-.048c-1.725-.614-2.627-2.5-2.013-4.235.334-.94 1.074-1.68 2.013-2.013l.135-.048-.062-.13c-.786-1.654-.083-3.632 1.57-4.418.9-.428 1.946-.428 2.847 0l.13.062.048-.135c.614-1.725 2.5-2.627 4.235-2.013.94.334 1.68 1.074 2.013 2.013l.048.135.13-.062c1.654-.786 3.632-.083 4.418 1.57.428.9.428 1.946 0 2.847l-.062.13.135.048c1.725.614 2.627 2.5 2.013 4.235-.334.94-1.074 1.68-2.013 2.013l-.135.048.062.13c.786 1.654.083 3.632-1.57 4.418-.9.428-1.946.428-2.847 0l-.13-.062-.048.135c-.614 1.725-2.5 2.627-4.235 2.013-.94-.334-1.68-1.074-2.013-2.013l-.048-.135z"/>
+                        <path fill="var(--white)" d="M14.293 9.293a1 1 0 0 1 1.497 1.32l-.083.094-4 4a1 1 0 0 1-1.32.083l-.094-.083-2-2a1 1 0 0 1 1.32-1.497l.094.083L11 12.585l3.293-3.292z"/>
+                      </svg>
+                    </div>
+                    <p class="text-truncate">@johndoe</p>
+                  </div>
+                  <button class="btn btn-primary d-inline-flex flex-shrink-0 align-items-center justify-content-center p-0 ml-5 rounded-sm" style="width: 1.5rem; height: 1.5rem;" type="button">
+                    <svg class="gi gi-double-check" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M16.116 6.213a1 1 0 0 0-1.403.171l-7.055 9.008-3.38-4.197a1 1 0 1 0-1.559 1.254l4.17 5.178c.19.236.477.373.78.373h.007a1 1 0 0 0 .78-.384l7.83-10a1 1 0 0 0-.171-1.403m5 0c-.435-.342-1.062-.264-1.403.17l-7.055 9.008-.604-.75-1.265 1.617 1.1 1.367c.19.236.477.373.78.373h.007a1 1 0 0 0 .78-.384l7.83-10a1 1 0 0 0-.171-1.403M8.213 13.06l1.267-1.616-.2-.25a1 1 0 1 0-1.558 1.254l.492.61z"/>
+                    </svg>
+                  </button>
+                </div>
+                <hr role="presentation">
+                <div class="d-flex align-items-center">
+                  <svg class="gi mr-3 rounded-circle" width="3rem" height="3rem" viewBox="0 0 24 24" fill="var(--auto)" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 0h24v24H0z"/>
+                  </svg>
+                  <div class="mr-auto overflow-hidden">
+                    <div class="d-flex">
+                      <h4 class="text-truncate mr-2 fs-1 lh-relaxed">
+                        <a class="link-headings" href="#">John Doe</a>
+                      </h4>
+                      <svg class="gi gi-badge fs-3" width="1em" height="1em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path fill="var(--primary)" d="M8.828 19.66l-.13.062c-1.654.786-3.632.083-4.418-1.57-.428-.9-.428-1.946 0-2.847l.062-.13-.135-.048c-1.725-.614-2.627-2.5-2.013-4.235.334-.94 1.074-1.68 2.013-2.013l.135-.048-.062-.13c-.786-1.654-.083-3.632 1.57-4.418.9-.428 1.946-.428 2.847 0l.13.062.048-.135c.614-1.725 2.5-2.627 4.235-2.013.94.334 1.68 1.074 2.013 2.013l.048.135.13-.062c1.654-.786 3.632-.083 4.418 1.57.428.9.428 1.946 0 2.847l-.062.13.135.048c1.725.614 2.627 2.5 2.013 4.235-.334.94-1.074 1.68-2.013 2.013l-.135.048.062.13c.786 1.654.083 3.632-1.57 4.418-.9.428-1.946.428-2.847 0l-.13-.062-.048.135c-.614 1.725-2.5 2.627-4.235 2.013-.94-.334-1.68-1.074-2.013-2.013l-.048-.135z"/>
+                        <path fill="var(--white)" d="M14.293 9.293a1 1 0 0 1 1.497 1.32l-.083.094-4 4a1 1 0 0 1-1.32.083l-.094-.083-2-2a1 1 0 0 1 1.32-1.497l.094.083L11 12.585l3.293-3.292z"/>
+                      </svg>
+                    </div>
+                    <p class="text-truncate">@johndoe</p>
+                  </div>
+                  <button class="btn btn-primary d-inline-flex flex-shrink-0 align-items-center justify-content-center p-0 ml-5 rounded-sm" style="width: 1.5rem; height: 1.5rem;" type="button">
+                    <svg class="gi gi-double-check" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M16.116 6.213a1 1 0 0 0-1.403.171l-7.055 9.008-3.38-4.197a1 1 0 1 0-1.559 1.254l4.17 5.178c.19.236.477.373.78.373h.007a1 1 0 0 0 .78-.384l7.83-10a1 1 0 0 0-.171-1.403m5 0c-.435-.342-1.062-.264-1.403.17l-7.055 9.008-.604-.75-1.265 1.617 1.1 1.367c.19.236.477.373.78.373h.007a1 1 0 0 0 .78-.384l7.83-10a1 1 0 0 0-.171-1.403M8.213 13.06l1.267-1.616-.2-.25a1 1 0 1 0-1.558 1.254l.492.61z"/>
+                    </svg>
+                  </button>
+                </div>
+                <hr role="presentation">
+                <div class="d-flex align-items-center">
+                  <svg class="gi mr-3 rounded-circle" width="3rem" height="3rem" viewBox="0 0 24 24" fill="var(--auto)" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 0h24v24H0z"/>
+                  </svg>
+                  <div class="mr-auto overflow-hidden">
+                    <div class="d-flex">
+                      <h4 class="text-truncate mr-2 fs-1 lh-relaxed">
+                        <a class="link-headings" href="#">John Doe</a>
+                      </h4>
+                      <svg class="gi gi-badge fs-3" width="1em" height="1em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path fill="var(--primary)" d="M8.828 19.66l-.13.062c-1.654.786-3.632.083-4.418-1.57-.428-.9-.428-1.946 0-2.847l.062-.13-.135-.048c-1.725-.614-2.627-2.5-2.013-4.235.334-.94 1.074-1.68 2.013-2.013l.135-.048-.062-.13c-.786-1.654-.083-3.632 1.57-4.418.9-.428 1.946-.428 2.847 0l.13.062.048-.135c.614-1.725 2.5-2.627 4.235-2.013.94.334 1.68 1.074 2.013 2.013l.048.135.13-.062c1.654-.786 3.632-.083 4.418 1.57.428.9.428 1.946 0 2.847l-.062.13.135.048c1.725.614 2.627 2.5 2.013 4.235-.334.94-1.074 1.68-2.013 2.013l-.135.048.062.13c.786 1.654.083 3.632-1.57 4.418-.9.428-1.946.428-2.847 0l-.13-.062-.048.135c-.614 1.725-2.5 2.627-4.235 2.013-.94-.334-1.68-1.074-2.013-2.013l-.048-.135z"/>
+                        <path fill="var(--white)" d="M14.293 9.293a1 1 0 0 1 1.497 1.32l-.083.094-4 4a1 1 0 0 1-1.32.083l-.094-.083-2-2a1 1 0 0 1 1.32-1.497l.094.083L11 12.585l3.293-3.292z"/>
+                      </svg>
+                    </div>
+                    <p class="text-truncate">@johndoe</p>
+                  </div>
+                  <button class="btn btn-primary d-inline-flex flex-shrink-0 align-items-center justify-content-center p-0 ml-5 rounded-sm" style="width: 1.5rem; height: 1.5rem;" type="button">
+                    <svg class="gi gi-double-check" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M16.116 6.213a1 1 0 0 0-1.403.171l-7.055 9.008-3.38-4.197a1 1 0 1 0-1.559 1.254l4.17 5.178c.19.236.477.373.78.373h.007a1 1 0 0 0 .78-.384l7.83-10a1 1 0 0 0-.171-1.403m5 0c-.435-.342-1.062-.264-1.403.17l-7.055 9.008-.604-.75-1.265 1.617 1.1 1.367c.19.236.477.373.78.373h.007a1 1 0 0 0 .78-.384l7.83-10a1 1 0 0 0-.171-1.403M8.213 13.06l1.267-1.616-.2-.25a1 1 0 1 0-1.558 1.254l.492.61z"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="followers" role="tabpanel">
+                <form>
+                  <div class="input-group mb-5">
+                    <div class="input-group-item">
+                      <svg class="gi gi-funnel-outline fs-3" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M19 3a1 1 0 0 1 .874 1.486h0L15 13.258V20a1 1 0 0 1-1.508.861h0l-.092-.06-4-3A1 1 0 0 1 9 17h0v-3.74L4.126 4.486a1 1 0 0 1 .762-1.48h0L5 3zm-1.7 2H6.7l4.174 7.514a1 1 0 0 1 .118.359h0L11 13v3.5l2 1.5v-5a1 1 0 0 1 .071-.371h0l.054-.115L17.3 5z"/>
+                      </svg>
+                    </div>
+                    <input class="form-control form-control-lg" type="search" placeholder="Filter" aria-label="Filter">
+                  </div>
+                </form>
+                <h3 class="fs-2">Followers</h3>
+                <hr role="presentation">
+                <div class="d-flex align-items-center">
+                  <svg class="gi mr-3 rounded-circle" width="3rem" height="3rem" viewBox="0 0 24 24" fill="var(--auto)" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 0h24v24H0z"/>
+                  </svg>
+                  <div class="mr-auto overflow-hidden">
+                    <div class="d-flex">
+                      <h4 class="text-truncate mr-2 fs-1 lh-relaxed">
+                        <a class="link-headings" href="#">John Doe</a>
+                      </h4>
+                      <svg class="gi gi-badge fs-3" width="1em" height="1em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path fill="var(--primary)" d="M8.828 19.66l-.13.062c-1.654.786-3.632.083-4.418-1.57-.428-.9-.428-1.946 0-2.847l.062-.13-.135-.048c-1.725-.614-2.627-2.5-2.013-4.235.334-.94 1.074-1.68 2.013-2.013l.135-.048-.062-.13c-.786-1.654-.083-3.632 1.57-4.418.9-.428 1.946-.428 2.847 0l.13.062.048-.135c.614-1.725 2.5-2.627 4.235-2.013.94.334 1.68 1.074 2.013 2.013l.048.135.13-.062c1.654-.786 3.632-.083 4.418 1.57.428.9.428 1.946 0 2.847l-.062.13.135.048c1.725.614 2.627 2.5 2.013 4.235-.334.94-1.074 1.68-2.013 2.013l-.135.048.062.13c.786 1.654.083 3.632-1.57 4.418-.9.428-1.946.428-2.847 0l-.13-.062-.048.135c-.614 1.725-2.5 2.627-4.235 2.013-.94-.334-1.68-1.074-2.013-2.013l-.048-.135z"/>
+                        <path fill="var(--white)" d="M14.293 9.293a1 1 0 0 1 1.497 1.32l-.083.094-4 4a1 1 0 0 1-1.32.083l-.094-.083-2-2a1 1 0 0 1 1.32-1.497l.094.083L11 12.585l3.293-3.292z"/>
+                      </svg>
+                    </div>
+                    <p class="text-truncate">@johndoe</p>
+                  </div>
+                  <button class="btn btn-auto d-inline-flex flex-shrink-0 align-items-center justify-content-center p-0 ml-5 rounded-sm" style="width: 1.5rem; height: 1.5rem;" type="button">
+                    <svg class="gi gi-plus-2" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12 5a1 1 0 0 1 .993.883L13 6v5h5a1 1 0 0 1 .117 1.993L18 13h-5v5a1 1 0 0 1-1.993.117L11 18v-5H6a1 1 0 0 1-.117-1.993L6 11h5V6a1 1 0 0 1 1-1z"/>
+                    </svg>
+                  </button>
+                </div>
+                <hr role="presentation">
+                <div class="d-flex align-items-center">
+                  <svg class="gi mr-3 rounded-circle" width="3rem" height="3rem" viewBox="0 0 24 24" fill="var(--auto)" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 0h24v24H0z"/>
+                  </svg>
+                  <div class="mr-auto overflow-hidden">
+                    <div class="d-flex">
+                      <h4 class="text-truncate mr-2 fs-1 lh-relaxed">
+                        <a class="link-headings" href="#">John Doe</a>
+                      </h4>
+                      <svg class="gi gi-badge fs-3" width="1em" height="1em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path fill="var(--primary)" d="M8.828 19.66l-.13.062c-1.654.786-3.632.083-4.418-1.57-.428-.9-.428-1.946 0-2.847l.062-.13-.135-.048c-1.725-.614-2.627-2.5-2.013-4.235.334-.94 1.074-1.68 2.013-2.013l.135-.048-.062-.13c-.786-1.654-.083-3.632 1.57-4.418.9-.428 1.946-.428 2.847 0l.13.062.048-.135c.614-1.725 2.5-2.627 4.235-2.013.94.334 1.68 1.074 2.013 2.013l.048.135.13-.062c1.654-.786 3.632-.083 4.418 1.57.428.9.428 1.946 0 2.847l-.062.13.135.048c1.725.614 2.627 2.5 2.013 4.235-.334.94-1.074 1.68-2.013 2.013l-.135.048.062.13c.786 1.654.083 3.632-1.57 4.418-.9.428-1.946.428-2.847 0l-.13-.062-.048.135c-.614 1.725-2.5 2.627-4.235 2.013-.94-.334-1.68-1.074-2.013-2.013l-.048-.135z"/>
+                        <path fill="var(--white)" d="M14.293 9.293a1 1 0 0 1 1.497 1.32l-.083.094-4 4a1 1 0 0 1-1.32.083l-.094-.083-2-2a1 1 0 0 1 1.32-1.497l.094.083L11 12.585l3.293-3.292z"/>
+                      </svg>
+                    </div>
+                    <p class="text-truncate">@johndoe</p>
+                  </div>
+                  <button class="btn btn-auto d-inline-flex flex-shrink-0 align-items-center justify-content-center p-0 ml-5 rounded-sm" style="width: 1.5rem; height: 1.5rem;" type="button">
+                    <svg class="gi gi-plus-2" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12 5a1 1 0 0 1 .993.883L13 6v5h5a1 1 0 0 1 .117 1.993L18 13h-5v5a1 1 0 0 1-1.993.117L11 18v-5H6a1 1 0 0 1-.117-1.993L6 11h5V6a1 1 0 0 1 1-1z"/>
+                    </svg>
+                  </button>
+                </div>
+                <hr role="presentation">
+                <div class="d-flex align-items-center">
+                  <svg class="gi mr-3 rounded-circle" width="3rem" height="3rem" viewBox="0 0 24 24" fill="var(--auto)" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 0h24v24H0z"/>
+                  </svg>
+                  <div class="mr-auto overflow-hidden">
+                    <div class="d-flex">
+                      <h4 class="text-truncate mr-2 fs-1 lh-relaxed">
+                        <a class="link-headings" href="#">John Doe</a>
+                      </h4>
+                      <svg class="gi gi-badge fs-3" width="1em" height="1em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path fill="var(--primary)" d="M8.828 19.66l-.13.062c-1.654.786-3.632.083-4.418-1.57-.428-.9-.428-1.946 0-2.847l.062-.13-.135-.048c-1.725-.614-2.627-2.5-2.013-4.235.334-.94 1.074-1.68 2.013-2.013l.135-.048-.062-.13c-.786-1.654-.083-3.632 1.57-4.418.9-.428 1.946-.428 2.847 0l.13.062.048-.135c.614-1.725 2.5-2.627 4.235-2.013.94.334 1.68 1.074 2.013 2.013l.048.135.13-.062c1.654-.786 3.632-.083 4.418 1.57.428.9.428 1.946 0 2.847l-.062.13.135.048c1.725.614 2.627 2.5 2.013 4.235-.334.94-1.074 1.68-2.013 2.013l-.135.048.062.13c.786 1.654.083 3.632-1.57 4.418-.9.428-1.946.428-2.847 0l-.13-.062-.048.135c-.614 1.725-2.5 2.627-4.235 2.013-.94-.334-1.68-1.074-2.013-2.013l-.048-.135z"/>
+                        <path fill="var(--white)" d="M14.293 9.293a1 1 0 0 1 1.497 1.32l-.083.094-4 4a1 1 0 0 1-1.32.083l-.094-.083-2-2a1 1 0 0 1 1.32-1.497l.094.083L11 12.585l3.293-3.292z"/>
+                      </svg>
+                    </div>
+                    <p class="text-truncate">@johndoe</p>
+                  </div>
+                  <button class="btn btn-auto d-inline-flex flex-shrink-0 align-items-center justify-content-center p-0 ml-5 rounded-sm" style="width: 1.5rem; height: 1.5rem;" type="button">
+                    <svg class="gi gi-plus-2" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12 5a1 1 0 0 1 .993.883L13 6v5h5a1 1 0 0 1 .117 1.993L18 13h-5v5a1 1 0 0 1-1.993.117L11 18v-5H6a1 1 0 0 1-.117-1.993L6 11h5V6a1 1 0 0 1 1-1z"/>
+                    </svg>
+                  </button>
+                </div>
+                <hr role="presentation">
+                <div class="d-flex align-items-center">
+                  <svg class="gi mr-3 rounded-circle" width="3rem" height="3rem" viewBox="0 0 24 24" fill="var(--auto)" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 0h24v24H0z"/>
+                  </svg>
+                  <div class="mr-auto overflow-hidden">
+                    <div class="d-flex">
+                      <h4 class="text-truncate mr-2 fs-1 lh-relaxed">
+                        <a class="link-headings" href="#">John Doe</a>
+                      </h4>
+                      <svg class="gi gi-badge fs-3" width="1em" height="1em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path fill="var(--primary)" d="M8.828 19.66l-.13.062c-1.654.786-3.632.083-4.418-1.57-.428-.9-.428-1.946 0-2.847l.062-.13-.135-.048c-1.725-.614-2.627-2.5-2.013-4.235.334-.94 1.074-1.68 2.013-2.013l.135-.048-.062-.13c-.786-1.654-.083-3.632 1.57-4.418.9-.428 1.946-.428 2.847 0l.13.062.048-.135c.614-1.725 2.5-2.627 4.235-2.013.94.334 1.68 1.074 2.013 2.013l.048.135.13-.062c1.654-.786 3.632-.083 4.418 1.57.428.9.428 1.946 0 2.847l-.062.13.135.048c1.725.614 2.627 2.5 2.013 4.235-.334.94-1.074 1.68-2.013 2.013l-.135.048.062.13c.786 1.654.083 3.632-1.57 4.418-.9.428-1.946.428-2.847 0l-.13-.062-.048.135c-.614 1.725-2.5 2.627-4.235 2.013-.94-.334-1.68-1.074-2.013-2.013l-.048-.135z"/>
+                        <path fill="var(--white)" d="M14.293 9.293a1 1 0 0 1 1.497 1.32l-.083.094-4 4a1 1 0 0 1-1.32.083l-.094-.083-2-2a1 1 0 0 1 1.32-1.497l.094.083L11 12.585l3.293-3.292z"/>
+                      </svg>
+                    </div>
+                    <p class="text-truncate">@johndoe</p>
+                  </div>
+                  <button class="btn btn-auto d-inline-flex flex-shrink-0 align-items-center justify-content-center p-0 ml-5 rounded-sm" style="width: 1.5rem; height: 1.5rem;" type="button">
+                    <svg class="gi gi-plus-2" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12 5a1 1 0 0 1 .993.883L13 6v5h5a1 1 0 0 1 .117 1.993L18 13h-5v5a1 1 0 0 1-1.993.117L11 18v-5H6a1 1 0 0 1-.117-1.993L6 11h5V6a1 1 0 0 1 1-1z"/>
+                    </svg>
+                  </button>
+                </div>
+                <hr role="presentation">
+                <div class="d-flex align-items-center">
+                  <svg class="gi mr-3 rounded-circle" width="3rem" height="3rem" viewBox="0 0 24 24" fill="var(--auto)" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 0h24v24H0z"/>
+                  </svg>
+                  <div class="mr-auto overflow-hidden">
+                    <div class="d-flex">
+                      <h4 class="text-truncate mr-2 fs-1 lh-relaxed">
+                        <a class="link-headings" href="#">John Doe</a>
+                      </h4>
+                      <svg class="gi gi-badge fs-3" width="1em" height="1em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path fill="var(--primary)" d="M8.828 19.66l-.13.062c-1.654.786-3.632.083-4.418-1.57-.428-.9-.428-1.946 0-2.847l.062-.13-.135-.048c-1.725-.614-2.627-2.5-2.013-4.235.334-.94 1.074-1.68 2.013-2.013l.135-.048-.062-.13c-.786-1.654-.083-3.632 1.57-4.418.9-.428 1.946-.428 2.847 0l.13.062.048-.135c.614-1.725 2.5-2.627 4.235-2.013.94.334 1.68 1.074 2.013 2.013l.048.135.13-.062c1.654-.786 3.632-.083 4.418 1.57.428.9.428 1.946 0 2.847l-.062.13.135.048c1.725.614 2.627 2.5 2.013 4.235-.334.94-1.074 1.68-2.013 2.013l-.135.048.062.13c.786 1.654.083 3.632-1.57 4.418-.9.428-1.946.428-2.847 0l-.13-.062-.048.135c-.614 1.725-2.5 2.627-4.235 2.013-.94-.334-1.68-1.074-2.013-2.013l-.048-.135z"/>
+                        <path fill="var(--white)" d="M14.293 9.293a1 1 0 0 1 1.497 1.32l-.083.094-4 4a1 1 0 0 1-1.32.083l-.094-.083-2-2a1 1 0 0 1 1.32-1.497l.094.083L11 12.585l3.293-3.292z"/>
+                      </svg>
+                    </div>
+                    <p class="text-truncate">@johndoe</p>
+                  </div>
+                  <button class="btn btn-auto d-inline-flex flex-shrink-0 align-items-center justify-content-center p-0 ml-5 rounded-sm" style="width: 1.5rem; height: 1.5rem;" type="button">
+                    <svg class="gi gi-plus-2" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12 5a1 1 0 0 1 .993.883L13 6v5h5a1 1 0 0 1 .117 1.993L18 13h-5v5a1 1 0 0 1-1.993.117L11 18v-5H6a1 1 0 0 1-.117-1.993L6 11h5V6a1 1 0 0 1 1-1z"/>
+                    </svg>
+                  </button>
+                </div>
+                <hr role="presentation">
+                <div class="d-flex align-items-center">
+                  <svg class="gi mr-3 rounded-circle" width="3rem" height="3rem" viewBox="0 0 24 24" fill="var(--auto)" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 0h24v24H0z"/>
+                  </svg>
+                  <div class="mr-auto overflow-hidden">
+                    <div class="d-flex">
+                      <h4 class="text-truncate mr-2 fs-1 lh-relaxed">
+                        <a class="link-headings" href="#">John Doe</a>
+                      </h4>
+                      <svg class="gi gi-badge fs-3" width="1em" height="1em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path fill="var(--primary)" d="M8.828 19.66l-.13.062c-1.654.786-3.632.083-4.418-1.57-.428-.9-.428-1.946 0-2.847l.062-.13-.135-.048c-1.725-.614-2.627-2.5-2.013-4.235.334-.94 1.074-1.68 2.013-2.013l.135-.048-.062-.13c-.786-1.654-.083-3.632 1.57-4.418.9-.428 1.946-.428 2.847 0l.13.062.048-.135c.614-1.725 2.5-2.627 4.235-2.013.94.334 1.68 1.074 2.013 2.013l.048.135.13-.062c1.654-.786 3.632-.083 4.418 1.57.428.9.428 1.946 0 2.847l-.062.13.135.048c1.725.614 2.627 2.5 2.013 4.235-.334.94-1.074 1.68-2.013 2.013l-.135.048.062.13c.786 1.654.083 3.632-1.57 4.418-.9.428-1.946.428-2.847 0l-.13-.062-.048.135c-.614 1.725-2.5 2.627-4.235 2.013-.94-.334-1.68-1.074-2.013-2.013l-.048-.135z"/>
+                        <path fill="var(--white)" d="M14.293 9.293a1 1 0 0 1 1.497 1.32l-.083.094-4 4a1 1 0 0 1-1.32.083l-.094-.083-2-2a1 1 0 0 1 1.32-1.497l.094.083L11 12.585l3.293-3.292z"/>
+                      </svg>
+                    </div>
+                    <p class="text-truncate">@johndoe</p>
+                  </div>
+                  <button class="btn btn-auto d-inline-flex flex-shrink-0 align-items-center justify-content-center p-0 ml-5 rounded-sm" style="width: 1.5rem; height: 1.5rem;" type="button">
+                    <svg class="gi gi-plus-2" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12 5a1 1 0 0 1 .993.883L13 6v5h5a1 1 0 0 1 .117 1.993L18 13h-5v5a1 1 0 0 1-1.993.117L11 18v-5H6a1 1 0 0 1-.117-1.993L6 11h5V6a1 1 0 0 1 1-1z"/>
+                    </svg>
+                  </button>
+                </div>
+                <hr role="presentation">
+                <div class="d-flex align-items-center">
+                  <svg class="gi mr-3 rounded-circle" width="3rem" height="3rem" viewBox="0 0 24 24" fill="var(--auto)" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 0h24v24H0z"/>
+                  </svg>
+                  <div class="mr-auto overflow-hidden">
+                    <div class="d-flex">
+                      <h4 class="text-truncate mr-2 fs-1 lh-relaxed">
+                        <a class="link-headings" href="#">John Doe</a>
+                      </h4>
+                      <svg class="gi gi-badge fs-3" width="1em" height="1em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path fill="var(--primary)" d="M8.828 19.66l-.13.062c-1.654.786-3.632.083-4.418-1.57-.428-.9-.428-1.946 0-2.847l.062-.13-.135-.048c-1.725-.614-2.627-2.5-2.013-4.235.334-.94 1.074-1.68 2.013-2.013l.135-.048-.062-.13c-.786-1.654-.083-3.632 1.57-4.418.9-.428 1.946-.428 2.847 0l.13.062.048-.135c.614-1.725 2.5-2.627 4.235-2.013.94.334 1.68 1.074 2.013 2.013l.048.135.13-.062c1.654-.786 3.632-.083 4.418 1.57.428.9.428 1.946 0 2.847l-.062.13.135.048c1.725.614 2.627 2.5 2.013 4.235-.334.94-1.074 1.68-2.013 2.013l-.135.048.062.13c.786 1.654.083 3.632-1.57 4.418-.9.428-1.946.428-2.847 0l-.13-.062-.048.135c-.614 1.725-2.5 2.627-4.235 2.013-.94-.334-1.68-1.074-2.013-2.013l-.048-.135z"/>
+                        <path fill="var(--white)" d="M14.293 9.293a1 1 0 0 1 1.497 1.32l-.083.094-4 4a1 1 0 0 1-1.32.083l-.094-.083-2-2a1 1 0 0 1 1.32-1.497l.094.083L11 12.585l3.293-3.292z"/>
+                      </svg>
+                    </div>
+                    <p class="text-truncate">@johndoe</p>
+                  </div>
+                  <button class="btn btn-auto d-inline-flex flex-shrink-0 align-items-center justify-content-center p-0 ml-5 rounded-sm" style="width: 1.5rem; height: 1.5rem;" type="button">
+                    <svg class="gi gi-plus-2" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12 5a1 1 0 0 1 .993.883L13 6v5h5a1 1 0 0 1 .117 1.993L18 13h-5v5a1 1 0 0 1-1.993.117L11 18v-5H6a1 1 0 0 1-.117-1.993L6 11h5V6a1 1 0 0 1 1-1z"/>
+                    </svg>
+                  </button>
+                </div>
+                <hr role="presentation">
+                <div class="d-flex align-items-center">
+                  <svg class="gi mr-3 rounded-circle" width="3rem" height="3rem" viewBox="0 0 24 24" fill="var(--auto)" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 0h24v24H0z"/>
+                  </svg>
+                  <div class="mr-auto overflow-hidden">
+                    <div class="d-flex">
+                      <h4 class="text-truncate mr-2 fs-1 lh-relaxed">
+                        <a class="link-headings" href="#">John Doe</a>
+                      </h4>
+                      <svg class="gi gi-badge fs-3" width="1em" height="1em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path fill="var(--primary)" d="M8.828 19.66l-.13.062c-1.654.786-3.632.083-4.418-1.57-.428-.9-.428-1.946 0-2.847l.062-.13-.135-.048c-1.725-.614-2.627-2.5-2.013-4.235.334-.94 1.074-1.68 2.013-2.013l.135-.048-.062-.13c-.786-1.654-.083-3.632 1.57-4.418.9-.428 1.946-.428 2.847 0l.13.062.048-.135c.614-1.725 2.5-2.627 4.235-2.013.94.334 1.68 1.074 2.013 2.013l.048.135.13-.062c1.654-.786 3.632-.083 4.418 1.57.428.9.428 1.946 0 2.847l-.062.13.135.048c1.725.614 2.627 2.5 2.013 4.235-.334.94-1.074 1.68-2.013 2.013l-.135.048.062.13c.786 1.654.083 3.632-1.57 4.418-.9.428-1.946.428-2.847 0l-.13-.062-.048.135c-.614 1.725-2.5 2.627-4.235 2.013-.94-.334-1.68-1.074-2.013-2.013l-.048-.135z"/>
+                        <path fill="var(--white)" d="M14.293 9.293a1 1 0 0 1 1.497 1.32l-.083.094-4 4a1 1 0 0 1-1.32.083l-.094-.083-2-2a1 1 0 0 1 1.32-1.497l.094.083L11 12.585l3.293-3.292z"/>
+                      </svg>
+                    </div>
+                    <p class="text-truncate">@johndoe</p>
+                  </div>
+                  <button class="btn btn-auto d-inline-flex flex-shrink-0 align-items-center justify-content-center p-0 ml-5 rounded-sm" style="width: 1.5rem; height: 1.5rem;" type="button">
+                    <svg class="gi gi-plus-2" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12 5a1 1 0 0 1 .993.883L13 6v5h5a1 1 0 0 1 .117 1.993L18 13h-5v5a1 1 0 0 1-1.993.117L11 18v-5H6a1 1 0 0 1-.117-1.993L6 11h5V6a1 1 0 0 1 1-1z"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-t6I8D5dJmMXjCsRLhSzCltuhNZg6P10kE0m0nAncLUjH6GeYLhRU1zfLoW3QNQDF" crossorigin="anonymous"></script>
+  </body>
+  </html>
