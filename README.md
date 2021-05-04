@@ -1,5 +1,5 @@
 # Twitter Clone Application
-##### _A full stack appliccation using Flask and SQLAlchemy. Check out the live version [here](https://twitter-clone-appl1cation.herokuapp.com/register)_
+##### _A full stack appliccation using Flask and SQLAlchemy. Check out the live version [here](http://twitterclone.shonkaga.com/register)_
 
 <p float="left">
   <img src="/markdownImages/feed.PNG" width="450" />
