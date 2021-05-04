@@ -19,9 +19,19 @@
                <form method="POST">
                  {{ form.hidden_tag() }}
                   <center>
-                     <h1 class="mb-5 fs-3">Sign in</h1>
+                     <h1 class="mb-2 fs-3">Sign in</h1>
+                     {% with messages = get_flashed_messages() %}
+                     {% if messages %}
+                     {% for message in messages %}
+                        <i> <span class="text-success mt-0 pt-0  fw-light" style="font-size:13px"> {{message}} </span></i>
+                    {% endfor %} {% endif %}
+                    {% endwith %}
+                    <div class="mb-3">
                   </center>
-                  <div class="input-group mb-3">
+                  {% for error in form.email.errors %}
+                        <i><span class="text-danger mt-0 pt-0 ml-3 fw-light" style="font-size:13px">{{error}}</span></i>
+                    {% endfor %}
+                  <div class="input-group mb-0">
                     <!-- email svg -->
                      <div class="input-group-item">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16">
@@ -30,7 +40,15 @@
                      </div>
                      <!-- the email inout -->
                      {{ form.email(class="form-control form-control-lg", **{'placeholder':"Email", 'required':'true', 'autofocus':'true'}) }}
+
+
+
                   </div>
+                  <div class="mb-5"></div>
+
+                  {% for error in form.password.errors %}
+                        <i><span class="text-danger mt-0 pt-0 ml-3 fw-light" style="font-size:13px">{{error}}</span></i>
+                    {% endfor %}
                   <div class="input-group mb-5">
                     <!-- the lock svg -->
                      <div class="input-group-item">
@@ -40,7 +58,9 @@
                      </div>
                      {{ form.password(class="form-control form-control-lg", **{'type':'password', 'placeholder':"Password", 'aria_label':"Password", 'required':true}) }}
                   </div>
-                  <center><a href="#">Forgot password?</a></center>
+
+                    <div class="mb-5"></div>
+                  <center><span data-toggle="tooltip" data-placement="right" title="Not implemented yet"><a href="#" >Forgot password?</a></span></center>
                   {{ form.submit(class="btn btn-lg btn-primary w-100 mt-3") }}
                </form>
             </div>

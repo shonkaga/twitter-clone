@@ -245,7 +245,7 @@
   </div>
   {% if current_user.username == user.username %}
   <!-- edit account pop up -->
-  <div class="modal fade" id="editAccountModal" tabindex="-1" aria-labelledby="editAccountModalLabel" aria-hidden="true">
+  <div class="modal fade" id="editAccountModal" tabindex="-1" aria-labelledby="editAccountModalLabel">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header shadow-none pb-1">
@@ -264,17 +264,38 @@
                     {{ account_form.hidden_tag() }}
 
 
+
                     {{ account_form.username.label(class="form-label") }}
-                    {{ account_form.username(class="form-control form-control-lg mb-5",  value=current_user.username) }}
+                    {% for error in account_form.username.errors %}
+                    <i><span class="text-danger  pt-0 ml-3 mb-0 pb-0 fw-light errorMssg " style="font-size:13px"> {{error}} </span></i>
+                    {% endfor %}
+                    {{ account_form.username(class="form-control form-control-lg  mb-5",  value=current_user.username) }}
+
+
+
 
                     {{ account_form.name.label(class="form-label") }}
+                    {% for error in account_form.name.errors %}
+                    <i><span class="text-danger  pt-0 ml-3 mb-0 pb-0 fw-light errorMssg" style="font-size:13px"> {{error}} </span></i>
+                    {% endfor %}
                     {{ account_form.name(class="form-control form-control-lg mb-5",  value=current_user.name) }}
 
+
+
                     {{ account_form.email.label(class="form-label") }}
+                    {% for error in account_form.email.errors %}
+                    <i><span class="text-danger  pt-0 ml-3 mb-0 pb-0 fw-light errorMssg" style="font-size:13px"> {{error}} </span></i>
+                    {% endfor %}
                     {{ account_form.email(class="form-control form-control-lg mb-5",  value=current_user.email) }}
 
+
+
                     {{ account_form.bio.label(class="form-label") }}
+                    {% for error in account_form.bio.errors %}
+                    <i><span class="text-danger  pt-0 ml-3 mb-0 pb-0 fw-light errorMssg" style="font-size:13px"> {{error}} </span></i>
+                    {% endfor %}
                     {{ account_form.bio(class="form-control form-control-lg mb-5",id="bio_value", rows="3", value=current_user.bio) }}
+
 
                     {{ account_form.picture.label(class="form-label") }}
                     {{ account_form.picture(class="form-control form-control-lg mb-5")  }}
@@ -310,7 +331,9 @@
               <!-- a form for making a post -->
               <form  method="POST" enctype="multipart/form-data">
                  {{ post_form.hidden_tag() }}
-
+                 {% for error in post_form.text.errors %}
+                 <i><span class="text-danger  pt-0 ml-3 mb-0 pb-0 fw-light" style="font-size:13px"> {{error}} </span></i>
+                 {% endfor %}
                  {{ post_form.text(class="form-control form-control-lg mb-5",  rows="3", placeholder="Express yourself") }}
 
                  {{ post_form.picture.label(class="form-label") }}
@@ -328,8 +351,23 @@
 
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-t6I8D5dJmMXjCsRLhSzCltuhNZg6P10kE0m0nAncLUjH6GeYLhRU1zfLoW3QNQDF" crossorigin="anonymous"></script>
-<script type="text/javascript">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script type="text/javascript">
   document.getElementById('bio_value').value="{{current_user.bio}}";
+
+  {% if user_update_failed %}
+  // this is a really ugly way of forcing the modal to show up again if there are validation error when validate on submit is run
+  $(window).on('load', function() {
+  $('#editAccountModal').modal('show');
+})
+
+// if a user closes the account modal clear out all the current errods
+$('#editAccountModal').on('hide.bs.modal', function (e){
+  $( ".errorMssg" ).remove();
+})
+  {% endif %}
+
+</script>
 </script>
 </body>
 </html>

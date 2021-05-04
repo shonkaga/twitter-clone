@@ -204,7 +204,9 @@
             <!-- a form for making a post -->
             <form  method="POST" enctype="multipart/form-data">
                {{ post_form.hidden_tag() }}
-
+               {% for error in post_form.text.errors %}
+               <i><span class="text-danger  pt-0 ml-3 mb-0 pb-0 fw-light" style="font-size:13px"> {{error}} </span></i>
+               {% endfor %}
                {{ post_form.text(class="form-control form-control-lg mb-5",  rows="3", placeholder="Express yourself") }}
 
                {{ post_form.picture.label(class="form-label") }}
