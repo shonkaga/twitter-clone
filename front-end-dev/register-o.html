@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-danger" role="alert">
+      {{message}}
+    </div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+
+{% for field, errors in form.errors.items() %}
+  {% for error in errors %}
+    <div class="alert alert-danger" role="alert">
+      {{error}}
+    </div>
+  {% endfor %}
+{% endfor %}
+
+
+<form method="POST">
+    {# This hidden_tag is a CSRF security feature. #}
+    {{ form.hidden_tag() }}
+    {{ form.email.label }} {{ form.email() }}<br>
+    {{ form.username.label }} {{ form.username() }}<br>
+    {{ form.password.label }} {{ form.password() }}<br>
+    {{ form.pass_confirm.label }} {{ form.pass_confirm() }}<br>
+    {{ form.submit() }}
+</form>
+{% endblock %}
