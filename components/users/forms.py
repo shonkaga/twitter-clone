@@ -19,7 +19,7 @@ class LoginForm(FlaskForm):
         user = User.query.filter_by(email=field.data).first()
         # if this email does not exist
         if user is None:
-            raise ValidationError('This email is not in the system.')
+            raise ValidationError('this email is not registered')
 
 
 

@@ -23,6 +23,7 @@ def register():
 
         db.session.add(user)
         db.session.commit()
+        flash("Account created. Please log in to continue")
         return redirect(url_for('users.login'))
     return render_template('register.html', form=form)
 
@@ -42,7 +43,7 @@ def login():
             #Log in the user
 
             login_user(user)
-            flash('Logged in successfully.')
+
 
 
             next = request.args.get('next')
@@ -53,7 +54,7 @@ def login():
 
             return redirect(next)
         else:
-            flash("Wrong Password")
+            form.password.errors.append('incorrect password')
     return render_template('login.html', form=form)
 
 
@@ -85,15 +86,17 @@ def account():
         #if username already exist and not current user explain username is taken
         searched_user = User.query.filter_by(username=account_form.username.data).first()
         if searched_user and not searched_user.username==current_user.username:
-            flash("This username is already taken")
-            return redirect(url_for('users.account'))
+            account_form.username.errors.append(account_form.username.data +' is already taken')
+            user_update_failed = True
+            return render_template('user.html', profile_image=profile_image, account_form=account_form,post_form=post_form, user=current_user, posts=posts ,user_update_failed=user_update_failed )
 
         #if email already exist and not current user explain email is taken
         searched_user = User.query.filter_by(email=account_form.email.data).first()
         if searched_user and not searched_user.email==current_user.email:
-            flash("This email is already taken")
+            user_update_failed = True
+            account_form.email.errors.append('email is already registered')
             profile_image = url_for('static', filename='profile_pics/' + current_user.profile_image)
-            return redirect(url_for('users.account'))
+            return render_template('user.html', profile_image=profile_image, account_form=account_form,post_form=post_form, user=current_user, posts=posts, user_update_failed=user_update_failed)
 
 
         current_user.username = account_form.username.data

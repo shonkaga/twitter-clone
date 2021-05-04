@@ -14,6 +14,6 @@ This form will be used to be able to write a new post.
 '''
 class WritePost(FlaskForm):
     # text for the post
-    text = TextAreaField('Text')
+    text = TextAreaField('Text',validators=[DataRequired(message='please write something to post')])
     picture = FileField('Add optional photo', validators=[FileAllowed(['jpg', 'png','jpeg','bmp','bmp','gif','webp'],message="This file type is not allowed")])
     submit = SubmitField('Post')
