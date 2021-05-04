@@ -1,96 +1,335 @@
-{% extends "base.html" %}
-{% block content %}
-<div class="container">
-  {% with messages = get_flashed_messages() %}
-    {% if messages %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Profile</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='assets/grayshift.min.css'  )}}">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap">
 
-      {% for message in messages %}
-      <div class="alert alert-danger" role="alert">
-        {{message}}
+</head>
+<body>
+  <nav class="navbar-default sticky-top bg-card shadow">
+    <div class="container d-flex align-items-center">
+      <a class="link-headings d-none d-lg-inline pt-4" href="{{ url_for('core.index') }}">
+        <h1 class="gi gi-fellowers mb-5 fs-4" width="111.66" height="40">Twitter Clone</h1>
+      </a>
+      <ul class="list-unstyled d-flex flex-grow-1 justify-content-between flex-lg-grow-0 mx-lg-auto">
+        <li class="nav-item">
+          <a class="nav-link py-3 px-lg-5 py-lg-4" href="{{ url_for('core.index') }}">
+            <svg class="gi gi-home fs-5" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path d="M2.336 11.253l-.08.08C1.685 11.956 2.12 13 3 13h1.116l.892 7.124A1 1 0 0 0 6 21h4a1 1 0 0 0 1-1v-4.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5V20a1 1 0 0 0 1 1h4l.115-.007a1 1 0 0 0 .877-.869l.89-7.124H21c.92 0 1.352-1.137.664-1.747l-9-8a1 1 0 0 0-1.329 0l-9 8z"/>
+            </svg>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active py-3 px-lg-5 py-lg-4 text-light" href="{{ url_for('users.account') }}" aria-current="page">
+            <svg class="gi gi-users fs-5" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9 13c1.93 0 3.677.78 4.943 2.043C14.787 14.4 15.848 14 17 14a5 5 0 0 1 5 5 1 1 0 0 1-1 1h-5a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1 7 7 0 0 1 7-7zM9 3a4 4 0 1 1 0 8 4 4 0 1 1 0-8zm8 10a3 3 0 1 0 0-6 3 3 0 1 0 0 6z"/>
+            </svg>
+          </a>
+        </li>
+
+      </ul>
+      <form>
+        <div class="input-group d-none d-lg-flex mr-3">
+          <div class="input-group-item">
+            <svg class="gi gi-search fs-3" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path d="M11 3a8 8 0 0 1 8 8c0 1.848-.627 3.55-1.68 4.905l3.386 3.388a1 1 0 0 1-1.32 1.497l-.094-.083-3.388-3.386C14.55 18.373 12.848 19 11 19a8 8 0 1 1 0-16zm0 2a6 6 0 1 0 0 12 6 6 0 1 0 0-12z"/>
+            </svg>
+          </div>
+          <input class="form-control disabled" style="max-width: 9rem;" type="search" placeholder="Search" aria-label="Search" >
+        </div>
+      </form>
+      <!-- profile image with drop down -->
+      <div class="dropdown">
+        <button class="btn p-0" data-toggle="dropdown" type="button" aria-expanded="false">
+          <span class="visually-hidden">Toggle Dropdown</span>
+          <img class="gi d-none d-lg-inline-block rounded-circle" height="48" src="{{ url_for('static', filename='profile_pics/' + current_user.profile_image) }}">
+        </button>
+        <div class="dropdown-menu dropdown-menu-right">
+          <a class="dropdown-item" href="{{ url_for('users.account') }}">Account</a>
+          <a class="dropdown-item" href="{{ url_for('users.logout') }}">Logout</a>
+        </div>
       </div>
-      {% endfor %}
-    {% endif %}
-  {% endwith %}
-  {% for field, errors in form.errors.items() %}
-  {% for error in errors %}
-
-
-  <div class="alert alert-danger" role="alert">
-    {{error}}
-  </div>
-  {% endfor %}
-  {% endfor %}
-  <div class="jumbotron">
-    <div align='center'>
-      <h1 >Page for  {{user.username}}</h1>
-      <p> {{user.name}} </p>
-      <img align='center' src="{{ url_for('static', filename='profile_pics/' + user.profile_image) }}">
-      <p> {{user.bio}} </p>
-      {% if current_user.is_authenticated and current_user.username == user.username %}
-        <a href="{{ url_for('users.account')}}"><button class="btn btn-primary" type="submit">Edit account</button></a>
-
-      {% endif %}
-
     </div>
+  </nav>
+<br><br><br>
 
-    {% if current_user.is_authenticated and current_user.username == user.username %}
-      <div align='center'>
-        <p> Write a post.. </p>
-        <form  method="POST" enctype="multipart/form-data">
-          {{ form.hidden_tag() }}
-          <div class="form-group">
-            {{ form.text.label(class="form-group") }}
-            {{form.text(class='form-control')  }}
+  <div class="py-6">
+    <div class="container">
+
+      <div class="row justify-content-center">
+
+        <div class="col-lg-12 col-xl-6">
+
+          <div class="card p-0 mb-5 text-center shadow-none">
+
+            <div class="position-relative">
+              <!-- large profile image -->
+              <img class="gi position-absolute top-100 left-50 rounded-circle translate-middle" style="border: 5px solid var(--card-bg);" height="192" src="{{ url_for('static', filename='profile_pics/' + user.profile_image) }}">
+
+
+            <!-- button list next to the profile image -->
+  <div class="position-absolute top-0 right-0 d-inline-flex flex-shrink-0 align-items-center justify-content-center p-0 mt-2 mr-2">
+
+              <div class="dropdown  m-2">
+                <button class="btn btn-dark d-inline-flex flex-shrink-0 align-items-center justify-content-center p-0 " data-toggle="dropdown" style="width: 2rem; height: 2rem;" type="button" aria-expanded="false">
+                  <span class="visually-hidden">Toggle Dropdown</span>
+                  <svg class="gi gi-more-horizontal" width="2em" height="2em" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5 14a2 2 0 1 0 0-4 2 2 0 1 0 0 4zm7 0a2 2 0 1 0 0-4 2 2 0 1 0 0 4zm7 0a2 2 0 1 0 0-4 2 2 0 1 0 0 4z"/>
+                  </svg>
+                </button>
+                <div class="dropdown-menu dropdown-menu-right">
+                  {% if current_user.username == user.username %}
+                  <button  class="btn btn-link dropdown-item" href="#"  data-toggle="modal" data-target="#editAccountModal" >Edit Profile</button >
+                  {% endif %}
+                  <a class="dropdown-item" href="#">Action</a>
+                  <a class="dropdown-item" href="#">Action</a>
+                </div>
+              </div>
+            </div>
+
+            </div>
+            <br><br>
+            <div class="p-5 pb-2 rounded-bottom shadow" style="padding-top: 3.5rem !important;">
+              <div class="d-flex justify-content-center">
+                <h4 class="text-truncate mr-2 fs-1 lh-relaxed">
+                  <a class="link-headings" href="#">{{user.name}}</a>
+                </h4>
+              </div>
+              <p class="text-truncate mb-5">@{{user.username}}</p>
+              <p class=" mb-5">{{user.bio}} </p>
+              <ul class="list-unstyled d-flex justify-content-around mb-5">
+                <li class="d-none d-sm-block">
+                  <a class="link-headings fw-semi-bold" href="#">0</a>
+                  <p>Posts</p>
+                </li>
+                <li>
+                  <a class="link-headings fw-semi-bold" data-toggle="modal" href="#auditoryModal" role="button">0</a>
+                  <p>Following</p>
+                </li>
+                <li>
+                  <a class="link-headings fw-semi-bold" data-toggle="modal" href="#auditoryModal" role="button">0</a>
+                  <p>Followers</p>
+                </li>
+              </ul>
+              <hr>
+            </div>
           </div>
-          <div class="form-group">
-            {{ form.picture.label(class="form-group") }}
-            {{ form.picture(class="form-control-file") }}
+
+
+
+          {% if current_user.username == user.username %}
+          <!-- fake write a post part --->
+          <!-- when clicked it will show the full write a post -->
+          <div class="card py-0 mb-5" data-toggle="modal" data-target="#newPost">
+            <div class=" row pl-4 pt-4">
+                <div class="col-auto p-0 m-0">
+                  <svg class="gi gi-edit-2 mr-3 fs-3 text-primary" width="1.3em" height="1.3em" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                      <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>                  </svg>
+                </div>
+                <div class="col-auto p-0 m-0">
+                    <span class="text-muted">Write a post</span>
+                  </div>
+
+
+
+            </div>
+
+            <hr class="p-0 m-0 mt-1 ">
+            <div class="row align-items-center ">
+                <div class="col-sm-8 col-md-9">
+
+                </div>
+            </div>
+            <div class="py-3">
+
+              <form>
+                        <div class="row align-items-center">
+                          <div class="col-sm-8 col-md-9">
+                            <div class="input-group mb-5 mb-sm-0">
+                              <div class="input-group-item pr-5 pl-0 bg-transparent">
+                                <img class="gi rounded-circle" height="48" src="{{ url_for('static', filename='profile_pics/' + current_user.profile_image) }}">
+
+                              </div>
+                              <input class="form-control p-0 bg-transparent" type="text" placeholder="What's on your mind?" aria-label="What's on your mind?">
+                            </div>
+                          </div>
+                          <div class="col-sm-4 col-md-3">
+                            <button class="btn btn-primary w-100" type="submit">Post</button>
+                          </div>
+                        </div>
+                      </form>
+
+
+            </div>
           </div>
-          <div class="form-group">
-              {{ form.submit(class="btn btn-primary") }}
+          {% endif %}
+          {% for post in posts %}
+
+          <!-- post  -->
+          <div class="card mb-5 mb-lg-0">
+            <div class="d-flex mb-5">
+              <img class="gi mr-3 rounded-circle" height="48" src="{{ url_for('static', filename='profile_pics/' + user.profile_image) }}" >
+
+              <div class="mr-auto overflow-hidden">
+                <div class="d-flex">
+                  <h4 class="text-truncate mr-2 fs-1 lh-relaxed">
+                    <a class="link-headings" href="{{ url_for('users.u', username=post.user.username) }}">{{ post.user.name }}</a>
+                  </h4>
+                  <span class="mr-2">&middot;</span>
+                  <!-- CHANGE THIS TO TIME THAT HAS PASSED -->
+                  <p>{{post.date.strftime('%Y-%m-%d')}}</p>
+                </div>
+                <p class="text-truncate">@{{ post.user.username }}</p>
+              </div>
+              <div class="dropdown ml-5">
+                <button class="btn btn-auto d-inline-flex flex-shrink-0 align-items-center justify-content-center p-0 rounded-circle" data-toggle="dropdown" style="width: 1.5rem; height: 1.5rem;" type="button" aria-expanded="false">
+                  <span class="visually-hidden">Toggle Dropdown</span>
+                  <svg class="gi gi-more-horizontal" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5 14a2 2 0 1 0 0-4 2 2 0 1 0 0 4zm7 0a2 2 0 1 0 0-4 2 2 0 1 0 0 4zm7 0a2 2 0 1 0 0-4 2 2 0 1 0 0 4z"/>
+                  </svg>
+                </button>
+                <div class="dropdown-menu dropdown-menu-right">
+                  <a class="dropdown-item" href="#">Action</a>
+                  <a class="dropdown-item" href="#">Action</a>
+                </div>
+              </div>
+            </div>
+            <p class="mb-5">{{post.text}}</p>
+            <div class="position-relative">
+              {% if post.image is not none %}
+                  <center><img class="gi gi-reply rounded justify-centered w-100 " src="{{ url_for('static', filename='post_pics/' + post.image) }}" ></center>
+              {% endif %}
+
+
+            </div>
+            <hr role="presentation">
+            <div class="row invisible-scrollbar flex-nowrap">
+              <div class="col">
+                <div class="d-flex">
+                  <button class="btn link-body d-inline-flex p-0 mr-3" type="button">
+                    <svg class="gi gi-heart fs-3" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M3.555 5a5.31 5.31 0 0 1 7.506 0l.938.938.94-.938a5.31 5.31 0 0 1 7.506 0 5.31 5.31 0 0 1 0 7.506l-7.737 7.737a1 1 0 0 1-1.414 0l-7.737-7.737a5.31 5.31 0 0 1 0-7.506z"/>
+                    </svg>
+                  </button>
+                  <!-- number of likes goes here once this is added -->
+                  <p></p>
+                </div>
+              </div>
+              <div class="col">
+                <div class="d-flex">
+                  <button class="btn link-body d-inline-flex p-0 mr-3" data-toggle="collapse" data-target="#collapseTwo" type="button" aria-expanded="false" aria-controls="collapseTwo">
+                    <svg class="gi gi-message-circle fs-3" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M10.397 2.124c3.23-.5 6.4.52 8.674 2.804s3.307 5.446 2.804 8.674c-.636 4.077-3.92 7.457-7.987 8.22-1.957.366-3.95.156-5.765-.61-.16-.066-.398-.135-.644-.088h0l-4.283.856a.93.93 0 0 1-.196.02 1 1 0 0 1-.98-1.196h0l.857-4.288c.04-.193.01-.41-.09-.64-.767-1.813-.978-3.807-.61-5.765.763-4.067 4.143-7.35 8.22-7.987zM8 11a1 1 0 1 0 0 2 1 1 0 1 0 0-2zm4 0a1 1 0 1 0 0 2 1 1 0 1 0 0-2zm4 0a1 1 0 1 0 0 2 1 1 0 1 0 0-2z"/>
+                    </svg>
+                  </button>
+                  <!-- number of comments is added here once this is added -->
+                  <p></p>
+                </div>
+              </div>
+
+            <div class="col"></div>
+            <div class="col"></div>
+            </div>
           </div>
-        </form>
+          <!-- end of post -->
+  <br><br><br>
+
+            {% endfor %}
+        </div>
       </div>
     </div>
-    {% endif %}
-
-    <h2> Posts: </h2>
-    {% for post in posts %}
-    <div class="card" style="width: 100%">
-  <div class="card-header">
-
-    <ul class="nav">
-      <li class="nav-item">
-        <a class="nav-link" href="{{ url_for('users.u', username=user.username)}}"> {{post.user.username }} </a>
-      </li>
-      <li class="nav-item">
-         <a class="nav-link"> {{post.date.strftime('%Y-%m-%d')}} </a>
-      </li>
-      {% if current_user.is_authenticated and current_user.username == user.username %}
-      <li class="nav-item">
-        <a class="nav-link" href="#"> edit post </a>
-      </li>
-    </ul>
-      {% endif %}
-
-
   </div>
+  {% if current_user.username == user.username %}
+  <!-- edit account pop up -->
+  <div class="modal fade" id="editAccountModal" tabindex="-1" aria-labelledby="editAccountModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header shadow-none pb-1">
+          <h2 class="fs-2" id="editAccountModalLabel">Edit Profile</h2>
+          <button class="btn btn-auto d-inline-flex flex-shrink-0 align-items-center justify-content-center p-0 rounded-circle" data-dismiss="modal" style="width: 2.5rem; height: 2.5rem;" type="button" aria-label="Close">
+            <svg class="gi gi-x fs-3" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path d="M7.613 6.2l.094.083L12 10.585l4.293-4.292.094-.083a1 1 0 0 1 1.403 1.403l-.083.094L13.415 12l4.292 4.293a1 1 0 0 1-1.32 1.497l-.094-.083L12 13.415l-4.293 4.292-.094.083a1 1 0 0 1-1.403-1.403l.083-.094L10.585 12 6.293 7.707a1 1 0 0 1 1.32-1.497z"/>
+            </svg>
+          </button>
+        </div>
+        <div class="modal-body rounded-bottom">
+          <div class="tab-content">
+            <div class="tab-pane fade show active" id="settingsAccount" role="tabpanel">
+              <!-- acount form -->
+              <form method="POST" enctype="multipart/form-data">
+                    {{ account_form.hidden_tag() }}
 
-  <div class="card-body">
-    <p class="card-text">{{post.text}}</p>
+
+                    {{ account_form.username.label(class="form-label") }}
+                    {{ account_form.username(class="form-control form-control-lg mb-5",  value=current_user.username) }}
+
+                    {{ account_form.name.label(class="form-label") }}
+                    {{ account_form.name(class="form-control form-control-lg mb-5",  value=current_user.name) }}
+
+                    {{ account_form.email.label(class="form-label") }}
+                    {{ account_form.email(class="form-control form-control-lg mb-5",  value=current_user.email) }}
+
+                    {{ account_form.bio.label(class="form-label") }}
+                    {{ account_form.bio(class="form-control form-control-lg mb-5",id="bio_value", rows="3", value=current_user.bio) }}
+
+                    {{ account_form.picture.label(class="form-label") }}
+                    {{ account_form.picture(class="form-control form-control-lg mb-5")  }}
+
+                    {{ account_form.submit(class="btn btn-lg btn-primary w-100") }}
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  {% if post.image %}
-    <img  src="{{url_for('static', filename='post_pics/' + post.image) }}">
   {% endif %}
-    {% endfor %}
-
-</div>
+  <!-- edit account pop up end -->
 
 
+  <!-- Write a Post Popup -->
+  <div class="modal fade" id="newPost" tabindex="-1" aria-labelledby="newPost" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header shadow-none pb-1">
 
-</div>
+          <h2 class="fs-2" id="editAccountModalLabel">Write a Post...</h2>
+          <button class="btn btn-auto d-inline-flex flex-shrink-0 align-items-center justify-content-center p-0 rounded-circle" data-dismiss="modal" style="width: 2.5rem; height: 2.5rem;" type="button" aria-label="Close">
+            <svg class="gi gi-x fs-3" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path d="M7.613 6.2l.094.083L12 10.585l4.293-4.292.094-.083a1 1 0 0 1 1.403 1.403l-.083.094L13.415 12l4.292 4.293a1 1 0 0 1-1.32 1.497l-.094-.083L12 13.415l-4.293 4.292-.094.083a1 1 0 0 1-1.403-1.403l.083-.094L10.585 12 6.293 7.707a1 1 0 0 1 1.32-1.497z"/>
+            </svg>
+          </button>
+        </div>
+        <div class="modal-body rounded-bottom">
+          <div class="tab-content">
+            <div class="tab-pane fade show active" id="settingsAccount" role="tabpanel">
+              <!-- a form for making a post -->
+              <form  method="POST" enctype="multipart/form-data">
+                 {{ post_form.hidden_tag() }}
 
+                 {{ post_form.text(class="form-control form-control-lg mb-5",  rows="3", placeholder="Express yourself") }}
 
+                 {{ post_form.picture.label(class="form-label") }}
+                 {{ post_form.picture(class="form-control form-control-lg mb-5") }}
+
+                 {{ post_form.submit(class="btn btn-lg btn-primary w-100") }}
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+  <!-- write a post pop up end -->
 
-{% endblock content %}
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-t6I8D5dJmMXjCsRLhSzCltuhNZg6P10kE0m0nAncLUjH6GeYLhRU1zfLoW3QNQDF" crossorigin="anonymous"></script>
+<script type="text/javascript">
+  document.getElementById('bio_value').value="{{current_user.bio}}";
+</script>
+</body>
+</html>
