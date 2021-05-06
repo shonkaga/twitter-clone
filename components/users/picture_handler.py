@@ -8,7 +8,7 @@ def add_profile_pic(pic_upload,username):
 
     filename = pic_upload.filename
     # Grab extension type .jpg or .png
-    ext_type = filename.split('.')[-1].lower()
+    ext_type = filename.split('.')[-1].upper()
     storage_filename = str(username) + '.' +ext_type
 
     filepath = os.path.join(current_app.root_path, 'static/profile_pics', storage_filename)
@@ -27,7 +27,7 @@ def add_post_pic(pic_upload,post_id):
     filename = pic_upload.filename
     # Grab extension type .jpg or .png
     ext_type = filename.split('.')[-1]
-    storage_filename = str(post_id) + '.' +ext_type
+    storage_filename = str(post_id) + '.' +ext_type.upper()
 
     filepath = os.path.join(current_app.root_path, 'static/post_pics', storage_filename)
 
