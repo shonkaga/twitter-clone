@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Bootstrap</title>
+    <!---bootstrap css-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <!---bootstrap icons-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <!---bootstrap croppie css for image croppping-->
+    <link href="./static/css/croppie.css" rel="stylesheet" type="text/css" />
+    <!---personal bootstrap-->
+    <link href="./static/css/mystyle.css" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body class="vh-100">
+    <div class="d-flex d-inline vh-100">
+        <!-- Motivational Twitter Part-->
+        <div class="d-none d-lg-flex d-lg-block vh-100 w-50  align-items-center justify-content-center blue-background ">
+            <div class="blue-heading fw-bold ">
+                <span><i class="bi bi-search pe-4 me-2  text-vertical-align extra-large-text"></i>Follow Your interests.</span><br>
+                <span><i class="bi bi-people pe-4 me-2 text-vertical-align extra-large-text"></i>Hear what people are talking about.</span><br>
+                <span><i class="bi bi-chat pe-4 me-2 text-vertical-align  extra-large-text"></i>Join the conversation.</span>
+            </div>
+
+
+
+        </div>
+        <div class="d-flex d-block vh-100 w-50  align-items-center justify-content-center w-sm-100">
+            <!--- right hand div for signin-->
+            <form class=" max-width-form sign-form">
+                <i class="bi bi-twitter twitter-blue-text fs-1"></i><br>
+                <span class="fs-3 fw-bold">See what's happening in the world right now.</span><br><br>
+                <span class="fs-5 fw-bold">Sign in:</span><br>
+                <br>
+                <!-- replace with error msg using span here-->
+                <div class="mb-3 mt-1">
+                    <input type="text" class="form-control px-2 py-2 input-focus-blue" id="usernameOrEmail" placeholder="Username or email">
+
+                </div>
+                <div class="mb-3">
+                    <input type="password" class="form-control px-2 py-2 input-focus-blue" id="password" placeholder="Password">
+                </div>
+                <div class="row">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class=" "><button class="btn btn-primary followButton" type="submit">Sign In</button></div>
+                        <div class=""> <span class="">Need an account? <a href="#" class="twitter-blue-text"> Sign Up</a> </span></div>
+                    </div>
+                </div>
+
+
+            </form>
+
+        </div>
+    </div>
+
+
+
+    <!---bootstrap bundle js-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js " integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4 " crossorigin="anonymous "></script>
+    <!---Jquery-->
+    <script src='./static/js/jquery-3.6.0.min.js'></script>
+    <!---autosize for textareas -->
+    <script src='./static/js/autosize.js'></script>
+    <!---croppie js for pictues for in browser cropping-->
+    <script src='./static/js/croppie.min.js'></script>
+    <!---personal script page-->
+    <script src="./static/js/myscript.js "></script>
+</body>
+
+</html>

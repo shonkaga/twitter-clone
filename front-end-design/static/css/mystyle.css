@@ -1,0 +1,225 @@
+      body {
+          background-color: #E1E8ED;
+          font-family: sans-serif;
+      }
+      /* Nav bar styling */
+      
+      .navbar {
+          -webkit-box-shadow: 0 0px 5px #657786;
+          -moz-box-shadow: 0 0px 5px #657786;
+          box-shadow: 0 0px 5px #657786;
+          background-color: #657786;
+      }
+      
+      nav a {
+          font-size: 1.5rem;
+          color: #AAB8C2
+      }
+      
+      .active i {
+          color: #1DA1F2;
+      }
+      
+      .searchbar input {
+          border: none;
+          background-color: transparent;
+      }
+      
+      .searchbar textarea:hover,
+      .searchbar input:hover,
+      .searchbar textarea:active,
+      .searchbar input:active,
+      .searchbar textarea:focus,
+      .searchbar input:focus,
+      .searchbar button:focus,
+      .searchbar button:active,
+      .searchbar button:hover,
+      .searchbar label:focus,
+      .searchbar .btn:active,
+      .searchbar .btn.active {
+          outline: 0px !important;
+          -webkit-appearance: none;
+          box-shadow: none !important;
+      }
+      
+      .searchbar {
+          border-radius: 20px;
+          padding: 12px;
+          background-color: #E1E8ED;
+      }
+      
+      .searchbar i {
+          color: #AAB8C2;
+      }
+      
+      .navNameBar span {
+          font-size: 1.1rem;
+          font-weight: bold;
+      }
+      
+      .navNameBar i {
+          font-weight: lighter;
+      }
+      
+      .navName {
+          color: #14171A;
+          font-style: normal;
+      }
+      
+      .postDiv {
+          background-color: #F5F8FA;
+          border-radius: 4px;
+      }
+      
+      .postDiv .name {
+          color: #14171A;
+          font-weight: bold;
+      }
+      
+      .twitter-blue-text {
+          color: #1DA1F2;
+      }
+      
+      .twitter-red-text {
+          color: #e0245e;
+      }
+      
+      .dropdownMenuLink {
+          color: #AAB8C2;
+      }
+      
+      .dropdown-menu {
+          background-color: #F5F8FA;
+      }
+      
+      .postbar {
+          width: 250px;
+          color: #657786;
+          font-size: 14px;
+      }
+      
+      .textboxLogos {
+          font-size: 25px;
+          color: #1DA1F2;
+      }
+      
+      .textboxPost,
+      .textboxPost:focus,
+      .textboxPost:active,
+      .textboxPost:hover {
+          border: #E1E8ED;
+          border-radius: 20px;
+          outline: none;
+          outline: none !important;
+          box-shadow: none;
+          background-color: #E1E8ED;
+          height: 40px;
+      }
+      
+      .postDiv .btn-primary,
+      .postDiv .btn-primary:focus,
+      .postDiv .btn-primary:active,
+      .postDiv .btn-primary:hover {
+          background-color: #1DA1F2;
+          border-radius: 15px;
+          height: 40px;
+          color: #F5F8FA;
+          border: none;
+          outline: none;
+          outline: none !important;
+          box-shadow: none;
+      }
+      
+      .postDiv .btn-outline-primary,
+      .postDiv .btn-outline-primary:focus,
+      .postDiv .btn-outline-primary:active,
+      .postDiv .btn-outline-primary:hover {
+          background-color: #F5F8FA;
+          border-radius: 15px;
+          height: 40px;
+          color: #1DA1F2;
+          border-color: #1DA1F2;
+          outline: none;
+          outline: none !important;
+          box-shadow: none;
+      }
+      
+      .hidebtn {
+          background-color: #F5F8FA;
+          color: #1DA1F2;
+          border: none;
+      }
+      
+      .post-image {
+          border: #657786;
+      }
+      /**** just for test.html**/
+      
+      .followButton {
+          width: 100px;
+      }
+      
+      .smallPush {
+          margin-bottom: 1px;
+          border-radius: 2px;
+      }
+      
+      .aboveStickyZIndex {
+          z-index: 1022;
+      }
+      
+      .retweet-text {
+          font-size: 14px;
+          color: #657786;
+      }
+      
+      .small-text {
+          font-size: 12px;
+      }
+      
+      .main-profile-image {
+          border: 5px solid #F5F8FA;
+          margin-top: -100px;
+      }
+      
+      .blue-background {
+          background-color: #1DA1F2;
+      }
+      
+      .blue-heading {
+          font-size: 20px;
+          color: #F5F8FA;
+      }
+      
+      .text-vertical-align {
+          vertical-align: middle
+      }
+      
+      .extra-large-text {
+          font-size: 50px;
+      }
+      
+      .max-width-form {
+          max-width: 400px;
+      }
+      /*** anything smaller than the large breakpoint***/
+      
+      @media (max-width:992px) {
+          .w-sm-100 {
+              width: 100%!important;
+          }
+      }
+      
+      .input-focus-blue:focus {
+          border-color: #1DA1F2!important;
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px #1DA1F2;
+      }
+      
+      .input-red-glow {
+          border-color: #FF0000;
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6);
+      }
+      
+      .invalid-text {
+          color: #FF0000;
+      }

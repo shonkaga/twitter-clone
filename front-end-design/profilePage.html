@@ -1,0 +1,440 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Bootstrap</title>
+    <!---bootstrap css-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <!---bootstrap icons-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <!---bootstrap croppie css for image croppping-->
+    <link href="./static/css/croppie.css" rel="stylesheet" type="text/css" />
+    <!---personal bootstrap-->
+    <link href="./static/css/mystyle.css" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-md navbar-light bg-light ">
+        <div class="container-fluid d-flex">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mx-3">
+                    <li class="nav-item mx-4">
+                        <a class="nav-link active" aria-current="page" href="#">
+                            <i class="bi bi-house-fill"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item mx-4">
+                        <a class="nav-link" aria-current="page" href="#">
+                            <i class="bi bi-search"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item mx-4">
+                        <a class="nav-link" aria-current="page" href="#">
+                            <i class="bi bi-bell"></i>
+                        </a>
+                    </li>
+
+
+
+
+                    <li class="nav-item mx-4">
+                        <a class="nav-link" aria-current="page" href="#">
+                            <i class="bi bi-envelope"></i>
+                        </a>
+                    </li>
+
+                </ul>
+                <form class="	d-none d-lg-flex mx-3  flex-fill p-0 me-4 py-2 searchbar">
+                    <i class="bi bi-search p-0 m-0 px-2"></i>
+                    <input class="form-control m-0 p-0" type="search" placeholder="Search Twitter" aria-label="Search">
+                </form>
+
+                <div class="inline-flex mx-4 d-none d-md-block navNameBar dropdown">
+
+                    <img class="rounded-circle img-fluid" src="https://randomuser.me/api/portraits/men/1.jpg" height="40" width="40">
+                    <span class="mx-2 navName">Douglas Gregory   <a class=" dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                        </a>
+
+                        <ul class="dropdown-menu mt-2 postDiv" aria-labelledby="dropdownMenuLink">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul></span>
+
+
+
+
+                </div>
+            </div>
+    </nav>
+    <!----------------------------------------------------------- NavBar end------------------------------------------------------>
+
+    <!----------------------------------------------------------- Body Starts ----------------------------------------------------->
+    <div class="mb-4"></div>
+    <div class="container-sm">
+        <div class="row  gx-5">
+            <!-------------------------------------------------------Main post feed ------------------------------------------------->
+
+            <div class="col-sm-12 col-md-12 col-lg-8 ">
+                <br>
+                <!-------------------------------------- Profile Header div---------------------------------------------->
+                <div class=" position-relative  postDiv mb-1">
+                    <!-------------------------------Top nav box----------------->
+                    <div class="row ps-2 pt-2">
+                        <div class="col-auto">
+                            <i class="bi bi-arrow-left twitter-blue-text ps-1 align-middle"></i>
+                        </div>
+                        <div class="col-auto">
+                            <div class="d-flex flex-column">
+                                <span class="name">Douglas Gregory</span>
+                                <span class="text-muted small-text">12 Tweets</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!--- cover profile image-->
+                    <div class="row">
+                        <img class="" src="https://via.placeholder.com/800x200">
+                    </div>
+                    <!------ profile image and follow button-->
+                    <div class="row">
+                        <div class="col-auto">
+                            <img class=" rounded-circle img-fluid main-profile-image ms-3" src="https://via.placeholder.com/200/">
+                        </div>
+                        <div class="col text-end">
+                            <div class="mx-3 my-3"><button class="btn btn-outline-primary px-3 followButton" type="submit">Follow</i></button></div>
+                        </div>
+                    </div>
+                    <!--- profile info content-->
+                    <div class="d-flex flex-column px-4 py-4">
+                        <span class="name fs-4">Douglas Gregory</span>
+                        <span class="text-muted fs-6">@douglasgregory</span>
+                        <span class="pt-2">In sollicitudin rhoncus odio, non mattis turpis tincidunt vel. Cras tempor mattis.</span>
+
+                    </div>
+
+
+
+                </div>
+                <!-------------------------------------- End Profile Header div---------------------------------------------->
+                <!-- Not adding a tweet write section here for now. Might come back and change this -->
+
+                <!--------------------------------------------------- Post Example-w/ image and re-tweet------------------------------------------------------------------->
+                <div class="py-2 px-2 position-relative mb-1 postDiv">
+                    <!-- drop down menu-->
+                    <div class="position-absolute top-0 end-0 ">
+                        <div class="dropdown pe-2 pt-1" id="dropdown">
+                            <a class="" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-three-dots dropdownMenuLink"></i>
+                            </a>
+                            <ul class="dropdown-menu aboveStickyZIndex" aria-labelledby="dropDownMenuLink" class="font-weight-lighter">
+                                <li><a class="dropdown-item pe-1" href="#"><i class="bi bi-exclamation-circle font-weight-lighter py-2 pe-2"></i> Report Tweet</a></li>
+                                <li><a class="dropdown-item pe-1" href="#"><i class="bi bi-x-circle font-weight-lighter py-2 pe-2"></i> Delete Tweet</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row g-3 pe-3">
+                        <!-- image collumn-->
+                        <div class="col-auto "><img class="rounded-circle img-fluid post-image" src="https://randomuser.me/api/portraits/men/1.jpg " height="40 " width="40 " /></div>
+                        <!-- post column-->
+                        <div class="col ">
+                            <div class="d-flex flex-column">
+                                <!-- post info: name, username and time-->
+                                <div><span class="align-top name">Douglas Gregory<span class="text-muted d-block d-md-inline fw-light"><span class="d-none d-md-inline"> &#183;</span> @douglasgregory &#183; 9h </span>
+                                    </span>
+                                </div>
+                            </div>
+                            <!-- post text---->
+                            <div>This is an example of what a tweet can look like <span class="twitter-blue-text">#design</span>. This one has an image. What happens if I keep typing how far will it go. Omg there is so much text that I could add<br>
+                                <img class="img-fluid  border border-1 rounded-3" src="./static/images/post.jpg">
+                            </div>
+                            <!-- The bottom like comment and share buttons -->
+                            <div class="row mt-3 postbar">
+                                <div class="col"><i class="bi bi-chat pe-1"></i>3</div>
+                                <div class="col name"><i class="bi bi-arrow-repeat pe-1"></i>4</div>
+                                <div class="col"><i class="bi bi-heart pe-1"></i>5</div>
+                                <div class="col"><i class="bi bi-share pe-1"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--------------------------------------------------- Post Example-w/ image and re-tweet------------------------------------------------------------------->
+                <!--------------------------------------------------- Post Example-w/ image and re-tweet------------------------------------------------------------------->
+                <div class="py-2 px-2 position-relative mb-1 postDiv">
+                    <!-- drop down menu-->
+                    <div class="position-absolute top-0 end-0 ">
+                        <div class="dropdown pe-2 pt-1" id="dropdown">
+                            <a class="" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-three-dots dropdownMenuLink"></i>
+                            </a>
+                            <ul class="dropdown-menu aboveStickyZIndex" aria-labelledby="dropDownMenuLink" class="font-weight-lighter">
+                                <li><a class="dropdown-item pe-1" href="#"><i class="bi bi-exclamation-circle font-weight-lighter py-2 pe-2"></i> Report Tweet</a></li>
+                                <li><a class="dropdown-item pe-1" href="#"><i class="bi bi-x-circle font-weight-lighter py-2 pe-2"></i> Delete Tweet</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <span class="ps-4 ms-3 mb-2 fw-bolder retweet-text"><i class="bi bi-arrow-repeat"></i> Douglas Gregory Retweeted</span>
+                    <div class="row g-3 pe-3">
+                        <!-- image collumn-->
+                        <div class="col-auto "><img class="rounded-circle img-fluid post-image" src="https://randomuser.me/api/portraits/men/1.jpg " height="40 " width="40 " /></div>
+                        <!-- post column-->
+                        <div class="col ">
+                            <div class="d-flex flex-column">
+                                <!-- post info: name, username and time-->
+                                <div><span class="align-top name">Douglas Gregory<span class="text-muted d-block d-md-inline fw-light"><span class="d-none d-md-inline"> &#183;</span> @douglasgregory &#183; 9h </span>
+                                    </span>
+                                </div>
+                            </div>
+                            <!-- post text---->
+                            <div>This is an example of what a tweet can look like <span class="twitter-blue-text">#design</span>. This one has an image. What happens if I keep typing how far will it go. Omg there is so much text that I could add<br>
+                                <img class="img-fluid  border border-1 rounded-3" src="./static/images/post.jpg">
+                            </div>
+                            <!-- The bottom like comment and share buttons -->
+                            <div class="row mt-3 postbar">
+                                <div class="col"><i class="bi bi-chat pe-1"></i>3</div>
+                                <div class="col name"><i class="bi bi-arrow-repeat pe-1"></i>4</div>
+                                <div class="col"><i class="bi bi-heart pe-1"></i>5</div>
+                                <div class="col"><i class="bi bi-share pe-1"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--------------------------------------------------- Post Example-w/ image and re-tweet------------------------------------------------------------------->
+                <!--------------------------------------------------- Post Example-w/ image and re-tweet------------------------------------------------------------------->
+                <div class="py-2 px-2 position-relative mb-1 postDiv">
+                    <!-- drop down menu-->
+                    <div class="position-absolute top-0 end-0 ">
+                        <div class="dropdown pe-2 pt-1" id="dropdown">
+                            <a class="" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-three-dots dropdownMenuLink"></i>
+                            </a>
+                            <ul class="dropdown-menu aboveStickyZIndex" aria-labelledby="dropDownMenuLink" class="font-weight-lighter">
+                                <li><a class="dropdown-item pe-1" href="#"><i class="bi bi-exclamation-circle font-weight-lighter py-2 pe-2"></i> Report Tweet</a></li>
+                                <li><a class="dropdown-item pe-1" href="#"><i class="bi bi-x-circle font-weight-lighter py-2 pe-2"></i> Delete Tweet</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <span class="ps-4 ms-3 mb-2 fw-bolder retweet-text"><i class="bi bi-arrow-repeat"></i> Douglas Gregory Retweeted</span>
+                    <div class="row g-3 pe-3">
+                        <!-- image collumn-->
+                        <div class="col-auto "><img class="rounded-circle img-fluid post-image" src="https://randomuser.me/api/portraits/men/1.jpg " height="40 " width="40 " /></div>
+                        <!-- post column-->
+                        <div class="col ">
+                            <div class="d-flex flex-column">
+                                <!-- post info: name, username and time-->
+                                <div><span class="align-top name">Douglas Gregory<span class="text-muted d-block d-md-inline fw-light"><span class="d-none d-md-inline"> &#183;</span> @douglasgregory &#183; 9h </span>
+                                    </span>
+                                </div>
+                            </div>
+                            <!-- post text---->
+                            <div>This is an example of what a tweet can look like <span class="twitter-blue-text">#design</span>. This one has an image. What happens if I keep typing how far will it go. Omg there is so much text that I could add<br>
+                                <img class="img-fluid  border border-1 rounded-3" src="./static/images/post.jpg">
+                            </div>
+                            <!-- The bottom like comment and share buttons -->
+                            <div class="row mt-3 postbar">
+                                <div class="col"><i class="bi bi-chat pe-1"></i>3</div>
+                                <div class="col name"><i class="bi bi-arrow-repeat pe-1"></i>4</div>
+                                <div class="col"><i class="bi bi-heart pe-1"></i>5</div>
+                                <div class="col"><i class="bi bi-share pe-1"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--------------------------------------------------- Post Example-w/ image and re-tweet------------------------------------------------------------------->
+                <!--------------------------------------------------- Post Example-w/ image and re-tweet------------------------------------------------------------------->
+                <div class="py-2 px-2 position-relative mb-1 postDiv">
+                    <!-- drop down menu-->
+                    <div class="position-absolute top-0 end-0 ">
+                        <div class="dropdown pe-2 pt-1" id="dropdown">
+                            <a class="" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-three-dots dropdownMenuLink"></i>
+                            </a>
+                            <ul class="dropdown-menu aboveStickyZIndex" aria-labelledby="dropDownMenuLink" class="font-weight-lighter">
+                                <li><a class="dropdown-item pe-1" href="#"><i class="bi bi-exclamation-circle font-weight-lighter py-2 pe-2"></i> Report Tweet</a></li>
+                                <li><a class="dropdown-item pe-1" href="#"><i class="bi bi-x-circle font-weight-lighter py-2 pe-2"></i> Delete Tweet</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <span class="ps-4 ms-3 mb-2 fw-bolder retweet-text"><i class="bi bi-arrow-repeat"></i> Douglas Gregory Retweeted</span>
+                    <div class="row g-3 pe-3">
+                        <!-- image collumn-->
+                        <div class="col-auto "><img class="rounded-circle img-fluid post-image" src="https://randomuser.me/api/portraits/men/1.jpg " height="40 " width="40 " /></div>
+                        <!-- post column-->
+                        <div class="col ">
+                            <div class="d-flex flex-column">
+                                <!-- post info: name, username and time-->
+                                <div><span class="align-top name">Douglas Gregory<span class="text-muted d-block d-md-inline fw-light"><span class="d-none d-md-inline"> &#183;</span> @douglasgregory &#183; 9h </span>
+                                    </span>
+                                </div>
+                            </div>
+                            <!-- post text---->
+                            <div>This is an example of what a tweet can look like <span class="twitter-blue-text">#design</span>. This one has an image. What happens if I keep typing how far will it go. Omg there is so much text that I could add<br>
+                                <img class="img-fluid  border border-1 rounded-3" src="./static/images/post.jpg">
+                            </div>
+                            <!-- The bottom like comment and share buttons -->
+                            <div class="row mt-3 postbar">
+                                <div class="col"><i class="bi bi-chat pe-1"></i>3</div>
+                                <div class="col name"><i class="bi bi-arrow-repeat pe-1"></i>4</div>
+                                <div class="col"><i class="bi bi-heart pe-1"></i>5</div>
+                                <div class="col"><i class="bi bi-share pe-1"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--------------------------------------------------- Post Example-w/ image and re-tweet------------------------------------------------------------------->
+
+            </div>
+
+            <!-------------------------------------------------------Side Bar feed---------------------------------------------------->
+            <div class=" d-none d-lg-block  col-md-4  ">
+                <div class="sticky-top">
+                    <br>
+                    <!---- who to follow box-->
+                    <div class="px-2 py-2 postDiv smallPush">
+                        <span class="fw-bold fs-5">Who to follow</span>
+                    </div>
+                    <!----------------------------- Follow Recomendation Box----------------------------------------------------->
+                    <div class="ps-2 py-2 postDiv smallPush ">
+                        <div class="row g-3 pe-3">
+                            <!-- image collumn-->
+                            <div class="col-auto "><img class="rounded-circle img-fluid post-image pt-1" src="https://randomuser.me/api/portraits/men/1.jpg " height="40 " width="40 " /></div>
+                            <!-- post column-->
+                            <div class="col ">
+                                <div class="d-flex flex-column">
+                                    <!-- post info: name, username and time-->
+                                    <div><span class="align-top "><span class="name">Douglas Gregory</span><br><span class="text-muted "> @douglasgregory</span></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-auto justify-content-end ">
+                                <div class=""><button class="btn btn-outline-primary px-4 followButton" type="submit">Follow</i></button></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!----------------------------- Follow Recomendation Box----------------------------------------------------->
+                    <div class="ps-2 py-2  postDiv smallPush">
+                        <div class="row g-3 pe-3">
+                            <!-- image collumn-->
+                            <div class="col-auto "><img class="rounded-circle img-fluid post-image pt-1" src="https://randomuser.me/api/portraits/men/1.jpg " height="40 " width="40 " /></div>
+                            <!-- post column-->
+                            <div class="col ">
+                                <div class="d-flex flex-column">
+                                    <!-- post info: name, username and time-->
+                                    <div><span class="align-top "><span class="name">Douglas Gregory</span><br><span class="text-muted "> @douglasgregory</span></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-auto justify-content-end ">
+                                <div class=""><button class="btn btn-outline-primary px-4 followButton" type="submit">Follow</i></button></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!----------------------------- Follow Recomendation Box----------------------------------------------------->
+                    <div class="ps-2 py-2  postDiv smallPush">
+                        <div class="row g-3 pe-3">
+                            <!-- image collumn-->
+                            <div class="col-auto "><img class="rounded-circle img-fluid post-image pt-1" src="https://randomuser.me/api/portraits/men/1.jpg " height="40 " width="40 " /></div>
+                            <!-- post column-->
+                            <div class="col ">
+                                <div class="d-flex flex-column">
+                                    <!-- post info: name, username and time-->
+                                    <div><span class="align-top "><span class="name">Douglas Gregory</span><br><span class="text-muted "> @douglasgregory</span></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-auto justify-content-end ">
+                                <div class=""><button class="btn btn-primary px-3 followButton" type="submit">Following</i></button></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ps-2 py-2  postDiv smallPush">
+                        <span class="fs-6 twitter-blue-text">Show more</span>
+                    </div>
+
+
+
+                    <!---------------------------------Trends For you Box ------------------------------------------------->
+                    <div class=""><br>
+                        <div class="px-2 py-2 postDiv smallPush">
+                            <span class="fw-bold fs-5">Trending on Twitter</span>
+                        </div>
+                        <!----------------------------- Follow Recomendation Box----------------------------------------------------->
+                        <div class="ps-2 py-2 postDiv smallPush">
+                            <div class="d-flex flex-row ">
+                                <div><span class="text-muted fs-6 me-3">1</span></div>
+                                <div class="d-flex flex-column ">
+                                    <div><span class="twitter-blue-text me-4">#designIsCool</span></div>
+                                    <div><span class="text-muted fs-6">50k Tweets</span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!----------------------------- Follow Recomendation Box----------------------------------------------------->
+                        <div class="ps-2 py-2 postDiv smallPush">
+                            <div class="d-flex flex-row ">
+                                <div><span class="text-muted fs-6 me-3">2</span></div>
+                                <div class="d-flex flex-column ">
+                                    <div><span class="twitter-blue-text me-4">#Documentation</span></div>
+                                    <div><span class="text-muted fs-6">12k Tweets</span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!----------------------------- Follow Recomendation Box----------------------------------------------------->
+                        <div class="ps-2 py-2 postDiv smallPush">
+                            <div class="d-flex flex-row ">
+                                <div><span class="text-muted fs-6 me-3">3</span></div>
+                                <div class="d-flex flex-column ">
+                                    <div><span class="twitter-blue-text me-4">#RandomHashTag</span></div>
+                                    <div><span class="text-muted fs-6">10k Tweets</span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!----------------------------- Follow Recomendation Box----------------------------------------------------->
+                        <div class="ps-2 py-2 postDiv smallPush">
+                            <div class="d-flex flex-row ">
+                                <div><span class="text-muted fs-6 me-3">4</span></div>
+                                <div class="d-flex flex-column ">
+                                    <div><span class="twitter-blue-text me-4">#WeirdTopic</span></div>
+                                    <div><span class="text-muted fs-6">9k Tweets</span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!----------------------------- Follow Recomendation Box----------------------------------------------------->
+                        <div class="ps-2 py-2 postDiv smallPush">
+                            <div class="d-flex flex-row ">
+                                <div><span class="text-muted fs-6 me-3">5</span></div>
+                                <div class="d-flex flex-column ">
+                                    <div><span class="twitter-blue-text me-4">#WorldNews</span></div>
+                                    <div><span class="text-muted fs-6">7k Tweets</span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!---bootstrap bundle js-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js " integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4 " crossorigin="anonymous "></script>
+    <!---Jquery-->
+    <script src='./static/js/jquery-3.6.0.min.js'></script>
+    <!---autosize for textareas -->
+    <script src='./static/js/autosize.js'></script>
+    <!---croppie js for pictues for in browser cropping-->
+    <script src='./static/js/croppie.min.js'></script>
+    <!---personal script page-->
+    <script src="./static/js/myscript.js "></script>
+</body>
+
+</html>
