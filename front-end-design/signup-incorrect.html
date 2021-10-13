@@ -33,22 +33,40 @@
             <!--- right hand div for signin-->
             <form class=" max-width-form sign-form">
                 <i class="bi bi-twitter twitter-blue-text fs-1"></i><br>
-                <span class="fs-3 fw-bold">See what's happening in the world right now.</span><br><br>
-                <span class="fs-5 fw-bold text-danger">Incorrect username or password</span><br>
-                <br>
-                <!-- replace with error msg using span here or br-->
+                <span class="fs-3 fw-bold">Join the conversation today.</span><br><br>
+                <p class="fs-5 fw-bold ">Sign up:</p>
+
+                <!-- replace with error msg using span here-->
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control username-check is-invalid" id="floatingInput" value="name@example.com">
-                    <label for="floatingInput">username or password</label>
+                    <input type="email" class="form-control is-invalid" id="floatingInput" value="example.com">
+                    <label for="floatingInput">Email address is invalid</label>
                 </div>
+
                 <div class="form-floating mb-3">
-                    <input type="password" class="form-control is-invalid" id="floatingPassword" value="">
-                    <label for="floatingPassword">Password</label>
+                    <input type="text" class="form-control is-invalid" id="floatingInput" value="Jo">
+                    <label for="floatingInput">Full Name too short</label>
                 </div>
-                <div class="row">
+
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control is-invalid" id="floatingInput" value="jSmith1242">
+                    <label for="floatingInput">Username already taken</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input type="password" class="form-control is-invalid" id="floatingPassword" value="password">
+                    <label for="floatingPassword">Password requires at least 5 characters</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input type="password" class="form-control is-invalid" id="floatingPassword" value="password">
+                    <label for="floatingPassword">Password does not match</label>
+                </div>
+
+
+                <div class="row pt-3">
                     <div class="d-flex justify-content-between align-items-center">
-                        <div class=" "><button class="btn btn-primary followButton" type="submit">Sign In</button></div>
-                        <div class=""> <span class="">Need an account? <a href="#" class="twitter-blue-text"> Sign Up</a> </span></div>
+                        <div class=" "><button class="btn btn-primary followButton" type="submit">Sign up</button></div>
+                        <div class=""> <span class="">Already have an account? <a href="#" class="twitter-blue-text"> Sign in.</a> </span></div>
                     </div>
                 </div>
 

@@ -32,12 +32,12 @@
                         </a>
                     </li>
                     <li class="nav-item mx-4">
-                        <a class="nav-link" aria-current="page" href="dev.html">
+                        <a class="nav-link" aria-current="page" href="#">
                             <i class="bi bi-search"></i>
                         </a>
                     </li>
                     <li class="nav-item mx-4">
-                        <a class="nav-link" aria-current="page" href="dev.html">
+                        <a class="nav-link" aria-current="page" href="#">
                             <i class="bi bi-bell"></i>
                         </a>
                     </li>
@@ -46,7 +46,7 @@
 
 
                     <li class="nav-item mx-4">
-                        <a class="nav-link" aria-current="page" href="dev.html">
+                        <a class="nav-link" aria-current="page" href="#">
                             <i class="bi bi-envelope"></i>
                         </a>
                     </li>
@@ -57,17 +57,16 @@
                     <input class="form-control m-0 p-0" type="search" placeholder="Search Twitter" aria-label="Search">
                 </form>
 
-                <div class="inline-flex mx-4 d-none d-md-block navNameBar dropdown div-link">
-                    <a href="profilePage.html" class="div-link-a"></a>
+                <div class="inline-flex mx-4 d-none d-md-block navNameBar dropdown">
 
                     <img class="rounded-circle img-fluid" src="https://randomuser.me/api/portraits/men/1.jpg" height="40" width="40">
-                    <span class="mx-2 navName">Douglas Gregory   <a class=" dropdown-toggle c" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                    <span class="mx-2 navName">Douglas Gregory   <a class=" dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                         </a>
 
-                        <ul class="dropdown-menu mt-2 postDiv c" aria-labelledby="dropdownMenuLink">
-                            <li><a class="dropdown-item c" href="profilePage.html">Profile</a></li>
-                            <li><a class="dropdown-item c" href="#">Action</a></li>
-                            <li><a class="dropdown-item c"  href="#">Another Action</a></li>
+                        <ul class="dropdown-menu mt-2 postDiv" aria-labelledby="dropdownMenuLink">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
                         </ul></span>
 
 
@@ -98,14 +97,22 @@
                         <div class="col">
                             <div class="d-flex flex-column ">
                                 <textarea class="form-control ms-1 pt-2 textboxPost " id="textboxPost" placeholder="What's happening?"></textarea>
-                                <input id="upload" type="file" class="upload-hidden" accept="image/*" />
+
                                 <div class="row mt-2 w-100 d-flex align-items-center ">
-                                    <div class="col-auto text-start"><button id="upload_replacement" class=" me-2  hidebtn" type="button"><i class="bi bi-image"></i></button></div>
+                                    <div class="col-auto text-start"><button class=" me-2  hidebtn" type="button"><i class="bi bi-image"></i></button></div>
                                     <div class="col-auto me-auto"><button class=" me-2  hidebtn" type="button"><i class="bi bi-link-45deg"></i></button></div>
                                     <div class="col-auto float-end"><button class="btn btn-outline-primary followButtoncopy tweetText" type="submit">Tweet</button></div>
                                 </div>
+
                             </div>
-                            <div class="upload-result"></div>
+
+                            <div class="upload-result">
+                                <hr>
+                                <div class="position-relative">
+                                    <div class="position-absolute top-0 end-0 px-2 py-2"><button id="delete-result" class="btn btn-light  postDiv"><i class="bi bi-x-circle px-0 py-0 mx-0 my-0"> delete image</i></button></div>
+                                    <img class="img-fluid  border border-1 rounded-3" src="./static/images/post.jpg">
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -367,34 +374,6 @@
                         <br>
                     </div>
                     <!--------------------------------Trending section done ----------------------------------->
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!----------------------------------------------COPPIE MODAL POPUP------------------------------------>
-    <div class="modal " id="ImageCropModal" tabindex="-1" aria-labelledby="ImageCropModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content postDiv">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="ImageCropModalLabel">Crop your image</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body mx-auto">
-
-                    <div class="croppie-container" style=" height:600px; width:600px;">
-                        <div id="upload-demo">
-                        </div>
-
-                    </div>
-
-                    <br><br>
-
-
-                </div>
-                <div class="modal-footer">
-                    <button class=" btn btn-outline-primary  followButtoncopy   hide-modal">Cancel</button>
-                    <button class="result-show btn btn-outline-primary  followButtoncopy">Save</button>
                 </div>
             </div>
         </div>

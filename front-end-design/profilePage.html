@@ -17,6 +17,7 @@
 </head>
 
 <body>
+    <!---------------------------------------------NAVBAR START------------------------------------------------->
     <nav class="navbar navbar-expand-md navbar-light bg-light ">
         <div class="container-fluid d-flex">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -30,12 +31,12 @@
                         </a>
                     </li>
                     <li class="nav-item mx-4">
-                        <a class="nav-link" aria-current="page" href="#">
+                        <a class="nav-link" aria-current="page" href="dev.html">
                             <i class="bi bi-search"></i>
                         </a>
                     </li>
                     <li class="nav-item mx-4">
-                        <a class="nav-link" aria-current="page" href="#">
+                        <a class="nav-link" aria-current="page" href="dev.html">
                             <i class="bi bi-bell"></i>
                         </a>
                     </li>
@@ -44,7 +45,7 @@
 
 
                     <li class="nav-item mx-4">
-                        <a class="nav-link" aria-current="page" href="#">
+                        <a class="nav-link" aria-current="page" href="dev.html">
                             <i class="bi bi-envelope"></i>
                         </a>
                     </li>
@@ -55,16 +56,17 @@
                     <input class="form-control m-0 p-0" type="search" placeholder="Search Twitter" aria-label="Search">
                 </form>
 
-                <div class="inline-flex mx-4 d-none d-md-block navNameBar dropdown">
+                <div class="inline-flex mx-4 d-none d-md-block navNameBar dropdown div-link">
+                    <a href="profilePage.html" class="div-link-a"></a>
 
                     <img class="rounded-circle img-fluid" src="https://randomuser.me/api/portraits/men/1.jpg" height="40" width="40">
-                    <span class="mx-2 navName">Douglas Gregory   <a class=" dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                    <span class="mx-2 navName">Douglas Gregory   <a class=" dropdown-toggle c" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                         </a>
 
-                        <ul class="dropdown-menu mt-2 postDiv" aria-labelledby="dropdownMenuLink">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        <ul class="dropdown-menu mt-2 postDiv c" aria-labelledby="dropdownMenuLink">
+                            <li><a class="dropdown-item c" href="profilePage.html">Profile</a></li>
+                            <li><a class="dropdown-item c" href="#">Action</a></li>
+                            <li><a class="dropdown-item c"  href="#">Another Action</a></li>
                         </ul></span>
 
 
@@ -73,7 +75,7 @@
                 </div>
             </div>
     </nav>
-    <!----------------------------------------------------------- NavBar end------------------------------------------------------>
+    <!----------------------------------------------------------NAVBAR START------------------------------------------------->
 
     <!----------------------------------------------------------- Body Starts ----------------------------------------------------->
     <div class="mb-4"></div>
@@ -107,14 +109,16 @@
                             <img class=" rounded-circle img-fluid main-profile-image ms-3" src="https://via.placeholder.com/200/">
                         </div>
                         <div class="col text-end">
-                            <div class="mx-3 my-3"><button class="btn btn-outline-primary px-3 followButton" type="submit">Follow</i></button></div>
+                            <div class="mx-3 my-3"><button class="btn btn-outline-primary px-3" type="submit"><i class="bi bi-envelope"></i></button> <button class="btn btn-outline-primary px-3 followButton" type="submit">Follow</button></div>
                         </div>
                     </div>
                     <!--- profile info content-->
                     <div class="d-flex flex-column px-4 py-4">
                         <span class="name fs-4">Douglas Gregory</span>
-                        <span class="text-muted fs-6">@douglasgregory</span>
+                        <span><span class="text-muted fs-6 pb-2">@douglasgregory</span><span class="text-muted fs-6 ps-3"><i class="bi bi-calendar3"></i> Joined July 2021</span></span>
+
                         <span class="pt-2">In sollicitudin rhoncus odio, non mattis turpis tincidunt vel. Cras tempor mattis.</span>
+                        <span class="text-muted fs-6 pt-3"><span class="name">12</span> Following <span class="name ps-2">15</span> Followers</span>
 
                     </div>
 

@@ -2,6 +2,15 @@
           background-color: #E1E8ED;
           font-family: sans-serif;
       }
+      
+      a {
+          text-decoration: none;
+          color: #053858;
+      }
+      
+      a:hover {
+          color: #0D95E8;
+      }
       /* Nav bar styling */
       
       .navbar {
@@ -40,6 +49,7 @@
           outline: 0px !important;
           -webkit-appearance: none;
           box-shadow: none !important;
+          background-color: #E1E8ED!important;
       }
       
       .searchbar {
@@ -68,7 +78,11 @@
       
       .postDiv {
           background-color: #F5F8FA;
-          border-radius: 4px;
+          margin-bottom: 2px;
+      }
+      
+      .postDiv:hover {
+          background-color: #f1f5f8f8;
       }
       
       .postDiv .name {
@@ -107,13 +121,13 @@
       .textboxPost:focus,
       .textboxPost:active,
       .textboxPost:hover {
-          border: #E1E8ED;
-          border-radius: 20px;
+          border: #657786;
+          border-width: 1px;
           outline: none;
           outline: none !important;
           box-shadow: none;
           background-color: #E1E8ED;
-          height: 40px;
+          height: 80px;
       }
       
       .postDiv .btn-primary,
@@ -134,7 +148,7 @@
       .postDiv .btn-outline-primary:focus,
       .postDiv .btn-outline-primary:active,
       .postDiv .btn-outline-primary:hover {
-          background-color: #F5F8FA;
+          background-color: transparent;
           border-radius: 15px;
           height: 40px;
           color: #1DA1F2;
@@ -145,10 +159,99 @@
       }
       
       .hidebtn {
-          background-color: #F5F8FA;
+          background-color: transparent;
           color: #1DA1F2;
           border: none;
       }
+      /** for the all of the post buttons **/
+      /** comment and save  **/
+      
+      .comment-hover button,
+      .save-hover button {
+          background-color: transparent;
+          border: none;
+          border-radius: 50%;
+          color: #657786;
+      }
+      
+      .comment-hover:hover button,
+      .save-hover:hover button {
+          background: rgb(29, 161, 242);
+          background: linear-gradient(90deg, rgba(29, 161, 242, 0.21052170868347342) 0%, rgba(29, 161, 242, 0.14049369747899154) 100%);
+          color: #1DA1F2;
+          border-radius: 50%;
+          border: none;
+      }
+      
+      .save-hover:hover,
+      .comment-hover:hover {
+          color: #1DA1F2;
+      }
+      /** retweet button  **/
+      
+      .repeat-hover button {
+          background-color: transparent;
+          border: none;
+          border-radius: 50%;
+          color: #657786;
+      }
+      
+      .repeat-hover:hover button {
+          background: #3faf829b;
+          background: linear-gradient(90deg, rgb(63, 175, 131, 0.21052170868347342) 0%, rgb(63, 175, 131, 0.14049369747899154) 100%);
+          color: #3faf83;
+          border-radius: 50%;
+          border: none;
+      }
+      
+      .repeat-hover:hover {
+          color: #3faf83;
+      }
+      /** like button  **/
+      
+      .like-hover button {
+          background-color: transparent;
+          border: none;
+          border-radius: 50%;
+          color: #657786;
+      }
+      
+      .like-hover:hover button {
+          background: rgb(255, 0, 0);
+          background: linear-gradient(90deg, rgba(255, 0, 0, 0.21052170868347342) 0%, rgba(255, 0, 0, 0.14049369747899154) 100%);
+          color: #FF0000;
+          border-radius: 50%;
+          border: none;
+      }
+      
+      .like-hover:hover {
+          color: #FF0000;
+      }
+      
+      .commented,
+      .commented button {
+          color: #1DA1F2;
+          font-weight: bold;
+      }
+      
+      .retweeted,
+      .retweeted button {
+          color: #3faf83;
+          font-weight: bold;
+      }
+      
+      .liked,
+      .liked button {
+          color: #FF0000;
+          font-weight: bold;
+      }
+      
+      .saved,
+      .saved button {
+          color: #1DA1F2;
+          font-weight: bold;
+      }
+      /** end for the all of the post buttons **/
       
       .post-image {
           border: #657786;
@@ -156,6 +259,10 @@
       /**** just for test.html**/
       
       .followButton {
+          width: 100px;
+      }
+      
+      .followButtoncopy {
           width: 100px;
       }
       
@@ -169,7 +276,11 @@
       }
       
       .retweet-text {
-          font-size: 14px;
+          font-size: 12px;
+          color: #657786;
+      }
+      
+      .retweet-text:hover {
           color: #657786;
       }
       
@@ -222,4 +333,24 @@
       
       .invalid-text {
           color: #FF0000;
+      }
+      
+      .underline-hover:hover {
+          text-decoration: underline;
+      }
+      
+      .btn-outline-primary:hover {
+          background-color: #1da0f213!important;
+      }
+      
+      .btn-primary:hover {
+          background-color: #1da0f2d8!important;
+      }
+      
+      .upload-hidden {
+          display: none;
+      }
+      
+      .full-width {
+          width: 100%;
       }

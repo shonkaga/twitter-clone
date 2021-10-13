@@ -1,0 +1,74 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Croppie Test</title>
+    <!---bootstrap css-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <!---bootstrap icons-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <!---bootstrap croppie css for image croppping-->
+    <link href="./static/css/croppie.css" rel="stylesheet" type="text/css" />
+    <!---personal bootstrap-->
+    <link href="./static/css/mystyle.css" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+
+    <!---bootstrap bundle js-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js " integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4 " crossorigin="anonymous "></script>
+    <!---Jquery-->
+    <script src='./static/js/jquery-3.6.0.min.js'></script>
+    <!---autosize for textareas -->
+    <script src='./static/js/autosize.js'></script>
+    <!---croppie js for pictues for in browser cropping-->
+    <script src='./static/js/croppie.min.js'></script>
+    <!---personal script page-->
+    <script src="./static/js/myscript.js "></script>
+
+
+
+    <center>
+        <div style="width: 400px; height: 400px;" class="croppie-container">
+            <img class="my-image" src="cat.jpg" />
+
+        </div>
+        <br><br>
+        <button class="result-show">Show Result</button>
+        <hr>
+        <div class="result">
+        </div>
+    </center>
+    <script>
+        $('.my-image').croppie({
+            viewport: {
+                width: 200,
+                height: 200,
+                type: 'circle'
+            }
+        });
+
+        $('.result-show').on('click', function() {
+            $('.my-image').croppie('result', {
+                type: 'canvas',
+                resultSize: {
+                    width: 50,
+                    height: 50
+                }
+            }).then(function(resp) {
+                imagehtml = '<img src="' + resp + '">'
+                console.log(imagehtml)
+                $('.result').html(imagehtml);
+            });
+        });
+    </script>
+
+
+
+
+
+</body>
+
+</html>
